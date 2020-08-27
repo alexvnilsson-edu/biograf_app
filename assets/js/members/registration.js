@@ -166,13 +166,11 @@ class CustomerRegistration extends Component {
       return (
         <div className="container my-5">
           <div className="container p-3 bg-light">
-            <h2>Du är nu registrerad!</h2>
+            <h2>
+              Tack {this.state.member.firstname} {this.state.member.surname}!
+            </h2>
 
-            <p>
-              <strong>
-                Tack {this.state.member.firstname} {this.state.member.surname}!
-              </strong>
-            </p>
+            <h4>Du är nu registrerad!</h4>
           </div>
         </div>
       );
