@@ -1,2 +1,5 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
+    globals:
+        api:
+            endpoint: '%env(resolve:APP_API_ENDPOINT)%'
