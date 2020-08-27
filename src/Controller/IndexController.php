@@ -11,12 +11,6 @@ class IndexController extends AbstractController {
      * @Route("/", name="index")
      */
     public function index() {
-        $customerRegisterUrl = $this->generateUrl("customer_register");
-
-        return $this->render("index/index.html.twig", [
-            "registration_form" => [
-                "action" => $customerRegisterUrl
-            ]
-        ]);
+        return $this->render("index/index.html.twig");
     }
 }
