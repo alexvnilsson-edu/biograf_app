@@ -26,19 +26,22 @@ if ($trustedHosts = $_SERVER['TRUSTED_HOSTS'] ?? false) {
 $kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
 $request = Request::createFromGlobals();
 
-Request::setTrustedProxies(
-    // the IP address (or range) of your proxy
-    ['10.0.0.0/24'],
+if (!$_SERVER['APP_DEBUG']) {
+    // Konfigurera server bakom reverse proxy om INTE APP_DEBUG
+    Request::setTrustedProxies(
+        // the IP address (or range) of your proxy
+        ['10.0.0.0/24'],
 
-    // trust *all* "X-Forwarded-*" headers
-    Request::HEADER_X_FORWARDED_ALL
+        // trust *all* "X-Forwarded-*" headers
+        Request::HEADER_X_FORWARDED_ALL
 
-    // or, if your proxy instead uses the "Forwarded" header
-    // Request::HEADER_FORWARDED
+        // or, if your proxy instead uses the "Forwarded" header
+        // Request::HEADER_FORWARDED
 
-    // or, if you're using AWS ELB
-    // Request::HEADER_X_FORWARDED_AWS_ELB
-);
+        // or, if you're using AWS ELB
+        // Request::HEADER_X_FORWARDED_AWS_ELB
+    );
+}
 
 $response = $kernel->handle($request);
 $response->send();
