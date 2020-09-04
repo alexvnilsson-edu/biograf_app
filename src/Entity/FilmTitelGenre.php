@@ -19,27 +19,49 @@ class FilmTitelGenre
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    public $id;
+    private $id;
+
+    public function getId() {
+        return $this->id;
+    }
+    
+    public function setId($value) {
+        $this->id = $value;
+    }
 
     /**
-     * @var \Filmgenre
+     * @var \FilmGenre
      *
-     * @ORM\ManyToOne(targetEntity="Filmgenre")
+     * @ORM\ManyToOne(targetEntity="App\Entity\FilmGenre")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="FilmGenreID", referencedColumnName="ID")
      * })
      */
-    public $filmgenreid;
+    private $filmGenre;
+
+    public function getFilmGenre() {
+        return $this->filmGenre;
+    }
+    
+    public function setFilmGenre($value) {
+        $this->filmGenre = $value;
+    }
 
     /**
-     * @var \Filmtitel
+     * @var \FilmTitel
      *
-     * @ORM\ManyToOne(targetEntity="Filmtitel")
+     * @ORM\ManyToOne(targetEntity="App\Entity\FilmTitel")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="FilmTitelID", referencedColumnName="ID")
      * })
      */
-    public $filmtitelid;
+    private $filmTitel;
 
-
+    public function getFilmTitel() {
+        return $this->filmTitel;
+    }
+    
+    public function setFilmTitel($value) {
+        $this->filmTitel = $value;
+    }
 }
