@@ -19,14 +19,14 @@ class Biograf
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    public $id;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="Namn", type="string", length=64, nullable=true)
      */
-    private $namn;
+    public $namn;
 
     /**
      * @var \Stad
@@ -36,7 +36,7 @@ class Biograf
      *   @ORM\JoinColumn(name="StadID", referencedColumnName="ID")
      * })
      */
-    private $stadid;
+    public $stadid;
 
 
 }

@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="FilmVisning", uniqueConstraints={@ORM\UniqueConstraint(name="ID_UNIQUE", columns={"ID"})}, indexes={@ORM\Index(name="FK_FilmTitel_idx", columns={"FilmTitelID"}), @ORM\Index(name="FK_Salong_idx", columns={"SalongID"})})
  * @ORM\Entity
  */
-class Filmvisning
+class FilmVisning
 {
     /**
      * @var int
@@ -19,21 +19,21 @@ class Filmvisning
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    public $id;
 
     /**
      * @var \DateTime|null
      *
      * @ORM\Column(name="StartTid", type="datetime", nullable=true)
      */
-    private $starttid;
+    public $starttid;
 
     /**
      * @var \DateTime|null
      *
      * @ORM\Column(name="SlutTid", type="datetime", nullable=true)
      */
-    private $sluttid;
+    public $sluttid;
 
     /**
      * @var \Filmtitel
@@ -43,7 +43,7 @@ class Filmvisning
      *   @ORM\JoinColumn(name="FilmTitelID", referencedColumnName="ID")
      * })
      */
-    private $filmtitelid;
+    public $filmtitelid;
 
     /**
      * @var \Salong
@@ -53,7 +53,7 @@ class Filmvisning
      *   @ORM\JoinColumn(name="SalongID", referencedColumnName="ID")
      * })
      */
-    private $salongid;
+    public $salongid;
 
 
 }

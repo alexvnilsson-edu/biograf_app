@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="FilmTitelGenre", indexes={@ORM\Index(name="FK_FilmGenre_idx", columns={"FilmGenreID"}), @ORM\Index(name="FK_FilmTitel_idx", columns={"FilmTitelID"})})
  * @ORM\Entity
  */
-class Filmtitelgenre
+class FilmTitelGenre
 {
     /**
      * @var int
@@ -19,7 +19,7 @@ class Filmtitelgenre
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    public $id;
 
     /**
      * @var \Filmgenre
@@ -29,7 +29,7 @@ class Filmtitelgenre
      *   @ORM\JoinColumn(name="FilmGenreID", referencedColumnName="ID")
      * })
      */
-    private $filmgenreid;
+    public $filmgenreid;
 
     /**
      * @var \Filmtitel
@@ -39,7 +39,7 @@ class Filmtitelgenre
      *   @ORM\JoinColumn(name="FilmTitelID", referencedColumnName="ID")
      * })
      */
-    private $filmtitelid;
+    public $filmtitelid;
 
 
 }

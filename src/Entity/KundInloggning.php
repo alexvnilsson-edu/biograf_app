@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="KundInloggning", uniqueConstraints={@ORM\UniqueConstraint(name="ID_UNIQUE", columns={"ID"})})
  * @ORM\Entity
  */
-class Kundinloggning
+class KundInloggning
 {
     /**
      * @var int
@@ -19,42 +19,42 @@ class Kundinloggning
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    public $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="EmailAdress", type="string", length=128, nullable=false)
      */
-    private $emailadress;
+    public $emailadress;
 
     /**
      * @var binary|null
      *
      * @ORM\Column(name="EmailAdressBekräftad", type="binary", nullable=true)
      */
-    private $emailadressbekräftad;
+    public $emailadressbekräftad;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="Lösenord", type="string", length=64, nullable=true, options={"comment"="SHA-512 hash av lösenord."})
      */
-    private $lösenord;
+    public $lösenord;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="LösenordSalt", type="string", length=64, nullable=true, options={"comment"="SHA-512 hash av lösenordssalt."})
      */
-    private $lösenordsalt;
+    public $lösenordsalt;
 
     /**
      * @var \DateTime|null
      *
      * @ORM\Column(name="SenasteInloggning", type="datetime", nullable=true)
      */
-    private $senasteinloggning;
+    public $senasteinloggning;
 
 
 }

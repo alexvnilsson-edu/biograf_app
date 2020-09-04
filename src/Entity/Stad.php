@@ -19,14 +19,14 @@ class Stad
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    public $id;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="Namn", type="string", length=64, nullable=true)
      */
-    private $namn;
+    public $namn;
 
 
 }

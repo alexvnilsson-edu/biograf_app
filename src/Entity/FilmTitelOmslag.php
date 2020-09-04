@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="FilmTitelOmslag", uniqueConstraints={@ORM\UniqueConstraint(name="BildfilNamn_UNIQUE", columns={"BildfilNamn"}), @ORM\UniqueConstraint(name="ID_UNIQUE", columns={"ID"})}, indexes={@ORM\Index(name="FK_FilmTitelOmslag_FilmTitel_idx", columns={"FilmTitelID"})})
  * @ORM\Entity
  */
-class Filmtitelomslag
+class FilmTitelOmslag
 {
     /**
      * @var int
@@ -19,14 +19,14 @@ class Filmtitelomslag
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    public $id;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="BildfilNamn", type="string", length=66, nullable=true)
      */
-    private $bildfilnamn;
+    public $bildfilnamn;
 
     /**
      * @var \Filmtitel
@@ -36,7 +36,7 @@ class Filmtitelomslag
      *   @ORM\JoinColumn(name="FilmTitelID", referencedColumnName="ID")
      * })
      */
-    private $filmtitelid;
+    public $filmtitelid;
 
 
 }

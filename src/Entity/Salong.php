@@ -19,21 +19,21 @@ class Salong
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    public $id;
 
     /**
      * @var int|null
      *
      * @ORM\Column(name="BiografID", type="integer", nullable=true)
      */
-    private $biografid;
+    public $biografid;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="Namn", type="string", length=64, nullable=true)
      */
-    private $namn;
+    public $namn;
 
     /**
      * @var int|null
@@ -42,7 +42,7 @@ class Salong
 1: Öppen
 2: Tillfälligt stängd"})
      */
-    private $status;
+    public $status;
 
 
 }

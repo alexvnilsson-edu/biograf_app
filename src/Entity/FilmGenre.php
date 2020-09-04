@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="FilmGenre", uniqueConstraints={@ORM\UniqueConstraint(name="ID_UNIQUE", columns={"ID"})})
  * @ORM\Entity
  */
-class Filmgenre
+class FilmGenre
 {
     /**
      * @var int
@@ -19,21 +19,21 @@ class Filmgenre
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    public $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="Namn", type="string", length=64, nullable=false)
      */
-    private $namn;
+    public $namn;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="Beskrivning", type="string", length=512, nullable=true)
      */
-    private $beskrivning;
+    public $beskrivning;
 
 
 }
