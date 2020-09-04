@@ -36,8 +36,13 @@ class MemberController extends AbstractController {
             throw new Exception("Form is invalid.", 0);
         }
 
-        $this->memberManager->create($form->getData());
+        $member = $this->memberManager->create($form->getData());
 
-        return new Response(json_encode($customer));
+        return new Response(json_encode([
+            "id" => $member->getId(),
+            "email" => $member->getEmailAdress(),
+            "firstname" => $member->getFörnamn(),
+            "surname" => $member->getEfternamn(),
+        ]));
     }
 }
