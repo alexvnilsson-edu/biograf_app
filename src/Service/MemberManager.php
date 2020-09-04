@@ -40,6 +40,8 @@ class MemberManager {
 
         $this->entityManager->persist($member);
         $this->entityManager->flush();
+
+        return $member;
     }
     
     public function get(int $id) {
