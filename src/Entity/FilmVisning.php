@@ -19,41 +19,43 @@ class FilmVisning
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    public $id;
+    private $id;
+
+    public function getId() {
+        return $this->id;
+    }
+    
+    public function setId($value) {
+        $this->id = $value;
+    }
 
     /**
      * @var \DateTime|null
      *
      * @ORM\Column(name="StartTid", type="datetime", nullable=true)
      */
-    public $starttid;
+    private $startTid;
+
+    public function getStartTid() {
+        return $this->startTid;
+    }
+    
+    public function setStartTid($value) {
+        $this->startTid = $value;
+    }
 
     /**
      * @var \DateTime|null
      *
      * @ORM\Column(name="SlutTid", type="datetime", nullable=true)
      */
-    public $sluttid;
+    private $slutTid;
 
-    /**
-     * @var \Filmtitel
-     *
-     * @ORM\ManyToOne(targetEntity="Filmtitel")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="FilmTitelID", referencedColumnName="ID")
-     * })
-     */
-    public $filmtitelid;
-
-    /**
-     * @var \Salong
-     *
-     * @ORM\ManyToOne(targetEntity="Salong")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="SalongID", referencedColumnName="ID")
-     * })
-     */
-    public $salongid;
-
-
+    public function getSlutTid() {
+        return $this->slutTid;
+    }
+    
+    public function setSlutTid($value) {
+        $this->slutTid = $value;
+    }
 }

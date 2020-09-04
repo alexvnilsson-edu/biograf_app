@@ -19,31 +19,61 @@ class KundPerson
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    public $id;
+    private $id;
+
+    public function getId() {
+        return $this->id;
+    }
+
+    public function setId($value) {
+        $this->id = $value;
+    }
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="FullständigtNamn", type="string", length=128, nullable=true)
      */
-    public $fullständigtnamn;
+    private $fullständigtNamn;
+
+    public function getFullständigtNamn() {
+        return $this->fullständigtNamn;
+    }
+
+    public function setFullständigtNamn($value) {
+        $this->fullständigtNamn = $value;
+    }
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="EmailAddress", type="string", length=128, nullable=true, options={"comment"="E-postadress för personen om personen inte är kontoansvarig (d.v.s. anhörig)."})
      */
-    public $emailaddress;
+    private $emailAdress;
+
+    public function getEmailAdress() {
+        return $this->emailAdress;
+    }
+
+    public function setEmailAdress($value) {
+        $this->emailAdress = $value;
+    }
 
     /**
-     * @var \Kundinloggning
+     * @var \KundInloggning
      *
-     * @ORM\ManyToOne(targetEntity="Kundinloggning")
+     * @ORM\ManyToOne(targetEntity="App\Entity\KundInloggning")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="KundInloggningID", referencedColumnName="ID")
      * })
      */
-    public $kundinloggningid;
+    private $kundInloggning;    
 
+    public function getKundInloggning() {
+        return $this->kundInloggning;
+    }
 
+    public function setKundInloggning($value) {
+        $this->kundInloggning = $value;
+    }
 }

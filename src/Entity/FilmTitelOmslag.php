@@ -19,24 +19,40 @@ class FilmTitelOmslag
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    public $id;
+    private $id;
+
+    public function getId() {
+        return $this->id;
+    }
+    
+    public function setId($value) {
+        $this->id = $value;
+    }
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="BildfilNamn", type="string", length=66, nullable=true)
      */
-    public $bildfilnamn;
+    private $bildFilnamn;
+
+    public function getBildFilnamn() {
+        return $this->bildFilnamn;
+    }
+    
+    public function setBildFilnamn($value) {
+        $this->bildFilnamn = $value;
+    }
 
     /**
-     * @var \Filmtitel
+     * @var \FilmTitel
      *
-     * @ORM\ManyToOne(targetEntity="Filmtitel")
-     * @ORM\JoinColumns({
+     * @ORM\ManyToOne(targetEntity="App\Entity\FilmTitel")
+     * @ORM\JoinTable(name={
      *   @ORM\JoinColumn(name="FilmTitelID", referencedColumnName="ID")
      * })
      */
-    public $filmtitelid;
+    private $filmFitelId;
 
 
 }
