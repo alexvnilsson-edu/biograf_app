@@ -10,7 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
-class CustomerType extends AbstractType {
+class MemberType extends AbstractType {
     /**
      * @Assert\NotBlank
      * @Assert\Email(
