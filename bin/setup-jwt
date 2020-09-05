@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if ! command -v openssl &> /dev/null; then
+    echo "OpenSSL krävs."
+    exit 1
+fi
+
+ENV_FILE=.env.local
+
+if [[ -f .env.local ]]; then
+    source $ENV_FILE
+    passphrase=$JWT_PASSPHRASE
+fi
+
+CONFIG_PATH=config/jwt
+PASSPHRASE_KEY_PATH=$CONFIG_PATH/passphrase
+PRIVATE_KEY_PATH=$CONFIG_PATH/private.pem
+PUBLIC_KEY_PATH=$CONFIG_PATH/public.pem
+
+[[ ! -d $CONFIG_PATH ]] && mkdir -p $CONFIG_PATH
+
+if [[ -f $PRIVATE_KEY_PATH ]] && [[ -f $PUBLIC_KEY_PATH ]]; then
+    read -p "Nycklar redan installerade. Ersätt? [y/n]" -n 1 -r
+    echo
+
+    if [[ $REPLY =~ ^[Nn]$ ]]; then
+        exit 1
+    fi
+fi
+
+openssl genpkey -pass pass:$passphrase -out $PRIVATE_KEY_PATH -aes256 -algorithm rsa -pkeyopt rsa_keygen_bits:4096
+openssl pkey -passin pass:$passphrase -in $PRIVATE_KEY_PATH -out $PUBLIC_KEY_PATH -pubout
