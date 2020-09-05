@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\DBAL\Types\DateTimeType;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -11,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="KundInloggning", uniqueConstraints={@ORM\UniqueConstraint(name="ID_UNIQUE", columns={"ID"})})
  * @ORM\Entity
  */
-class KundInloggning
+class KundInloggning implements UserInterface
 {
     /**
      * @var int
@@ -36,6 +37,10 @@ class KundInloggning
      * @ORM\Column(name="EmailAdress", type="string", length=128, nullable=false)
      */
     private string $emailAdress;
+
+    public function getUsername() {
+        return $this->emailAdress;
+    }
 
     public function getEmailAdress() {
         return $this->emailAdress;
@@ -65,14 +70,24 @@ class KundInloggning
      *
      * @ORM\Column(name="Lösenord", type="string", length=130, nullable=true, options={"comment"="SHA-512 hash av lösenord."})
      */
-    private string $lösenord;
+    private string $password;
 
-    public function getLösenord() {
-        return $this->lösenord;
+    public function getPassword() {
+        return $this->password;
     }
     
+    public function setPassword($value) {
+        $this->password = $value;
+    }
+
+    // Alias
+    public function getLösenord() {
+        return $this->password;
+    }
+    
+    // Alias
     public function setLösenord($value) {
-        $this->lösenord = $value;
+        $this->password = $value;
     }
 
     /**
@@ -81,6 +96,10 @@ class KundInloggning
      * @ORM\Column(name="LösenordSalt", type="string", length=130, nullable=true, options={"comment"="SHA-512 hash av lösenordssalt."})
      */
     private string $lösenordSalt;
+
+    public function getSalt() {
+        return $this->lösenordSalt;
+    }
     
     public function getLösenordSalt() {
         return $this->lösenordSalt;
@@ -133,5 +152,18 @@ class KundInloggning
     
     public function setEfternamn($value) {
         $this->efternamn = $value;
+    }
+
+    /**
+     * @return array|string[]
+    */
+    public function getRoles()
+    {
+        return array('ROLE_USER');
+    }
+
+    public function eraseCredentials()
+    {
+
     }
 }

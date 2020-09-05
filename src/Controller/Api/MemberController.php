@@ -2,6 +2,7 @@
 
 namespace App\Controller\Api;
 
+use App\Form\Type\MemberAuthenticationType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,6 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Form\Type\MemberType;
 use App\Service\MemberManager;
 use Exception;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -23,9 +25,9 @@ class MemberController extends AbstractController {
     }
 
     /**
-     * @Route("", name="post", methods={"POST"})
+     * @Route("/registrera", name="registrera", methods={"POST"})
      */
-    public function post(Request $request) {
+    public function registrera(Request $request) {
         $data = json_decode($request->getContent(), true);
 
         $customer = new MemberType();
