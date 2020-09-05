@@ -155,6 +155,19 @@ class KundInloggning implements UserInterface
     }
 
     /**
+     * @ORM\Column(name="ApiToken", type="string", length=256, unique=true, nullable=true)
+     */
+    private $apiToken;
+
+    public function getApiToken() {
+        return $this->apiToken;
+    }
+    
+    public function setApiToken($value) {
+        $this->apiToken = $value;
+    }
+
+    /**
      * @return array|string[]
     */
     public function getRoles()

@@ -1,20 +1,26 @@
 import React, { Component } from "react";
 import axios from "axios";
 import ReactDOM from "react-dom";
-import "../../css/app.scss";
-import "@fortawesome/fontawesome-free/js/all.js";
+//import "@fortawesome/fontawesome-free/js/all.js";
 
-const FORM_DEFAULTS = {
+const CUSTOMER_FORM_DEFAULTS = {
   email: "",
   password: "",
+  passwordConfirm: "",
+  firstname: "",
+  surname: "",
 };
 
-class CustomerLogin extends Component {
+class CustomerRegistration extends Component {
   constructor() {
     super();
 
     this.state = {
-      form: FORM_DEFAULTS,
+      routing: {
+        goToPageDone: false,
+      },
+      form: CUSTOMER_FORM_DEFAULTS,
+      member: null,
       formSubmitted: false,
       formAccepted: false,
     };
@@ -50,14 +56,19 @@ class CustomerLogin extends Component {
 
     axios({
       method: "post",
-      url: `${window.APP_API_ENDPOINT}/api/medlemmar/loggain`,
+      url: `${window.APP_API_ENDPOINT}/api/medlemmar/registrera`,
       data: this.state.form,
     })
       .then((response) => {
         this.setState({
           formSubmitted: true,
           formAccepted: true,
-          form: FORM_DEFAULTS,
+          routing: {
+            ...this.state.routing,
+            goToPageDone: true,
+          },
+          member: response.data,
+          form: CUSTOMER_FORM_DEFAULTS,
         });
         console.log("Svar från server:", this.state.member);
       })
@@ -92,6 +103,10 @@ class CustomerLogin extends Component {
   }
 
   render() {
+    if (this.state.routing.goToPageDone === true) {
+      return this.handleFormFinished();
+    }
+
     return (
       <div className="container my-5">
         <form onSubmit={this.handleFormSubmit}>
@@ -102,9 +117,9 @@ class CustomerLogin extends Component {
             >
               <i className="fas fa-chevron-left fa-lg" />
             </a>
-            <h1 className="my-0">Inloggning för medlemmar</h1>
+            <h1 className="my-0">Registrera ny kund</h1>
           </div>
-          <div className="container p-3 bg-light" style={{ maxWidth: "25em" }}>
+          <div className="container p-3 bg-light">
             <h3 className="mt-0 mb-3 text-dark">Inloggningsuppgifter</h3>
 
             <div className="form-group">
@@ -119,23 +134,66 @@ class CustomerLogin extends Component {
               />
             </div>
 
-            <div className="form-group">
-              <input
-                type="password"
-                className="form-control"
-                name="password"
-                placeholder="Lösenord"
-                required
-                value={this.state.form.password}
-                onChange={this.handleFormChange}
-              />
-            </div>
+            <div className="row">
+              <div className="col">
+                <input
+                  type="password"
+                  className="form-control"
+                  name="password"
+                  placeholder="Lösenord"
+                  required
+                  value={this.state.form.password}
+                  onChange={this.handleFormChange}
+                />
+              </div>
 
-            <div className="d-flex justify-content-end mt-1">
-              <button type="submit" className="btn btn-primary">
-                Logga in
-              </button>
+              <div className="col">
+                <input
+                  type="password"
+                  className="form-control"
+                  name="passwordConfirm"
+                  placeholder="Bekräfta lösenord"
+                  required
+                  value={this.state.form.passwordConfirm}
+                  onChange={this.handleFormChange}
+                />
+              </div>
             </div>
+          </div>
+
+          <div className="container mt-2 p-3 bg-light">
+            <h3 className="mt-0 mb-3 text-dark">Personuppgifter</h3>
+
+            <div className="row">
+              <div className="col">
+                <input
+                  type="text"
+                  className="form-control"
+                  name="firstname"
+                  placeholder="Tilltalsnamn"
+                  required
+                  value={this.state.form.firstname}
+                  onChange={this.handleFormChange}
+                />
+              </div>
+
+              <div className="col">
+                <input
+                  type="text"
+                  className="form-control"
+                  name="surname"
+                  placeholder="Efternamn"
+                  value={this.state.form.surname}
+                  onChange={this.handleFormChange}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="d-flex justify-content-end mt-1">
+            <button type="submit" className="btn btn-primary">
+              Registrera
+            </button>
           </div>
         </form>
       </div>
@@ -143,6 +201,6 @@ class CustomerLogin extends Component {
   }
 }
 
-ReactDOM.render(<CustomerLogin />, document.getElementById("root"));
+ReactDOM.render(<CustomerRegistration />, document.getElementById("root"));
 
-export default CustomerLogin;
+export default CustomerRegistration;

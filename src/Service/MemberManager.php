@@ -12,6 +12,7 @@ use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class MemberManager {
     public static string $CSRF_TOKEN_NAME = "member-authentication";
@@ -20,14 +21,15 @@ class MemberManager {
     protected static string $PASSWORD_HASH_ALGORITHM = "sha512";
     
 
-    protected EntityManagerInterface $entityManager;
+    private EntityManagerInterface $entityManager;
+    private JWTTokenManagerInterface $tokenManager;
+    private UserPasswordEncoderInterface $passwordEncoder;
 
-    protected JWTTokenManagerInterface $tokenManager;
-
-    public function __construct(EntityManagerInterface $entityManager, JWTTokenManagerInterface $tokenManager)
+    public function __construct(EntityManagerInterface $entityManager, JWTTokenManagerInterface $tokenManager, UserPasswordEncoderInterface $passwordEncoder)
     {
         $this->entityManager = $entityManager;
         $this->tokenManager = $tokenManager;
+        $this->passwordEncoder = $passwordEncoder;
     }
 
     private function createSalt() {

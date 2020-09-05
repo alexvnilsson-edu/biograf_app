@@ -23,14 +23,17 @@ Encore
    * Each entry will result in one JavaScript file (e.g. app.js)
    * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
    */
-  .addEntry("members_registration", "./assets/js/members/registration.js")
-  .addEntry("members_login", "./assets/js/members/login.js")
+  .addEntry("core_http", "./assets/js/core/http.js")
+  .addEntry("style", "./assets/js/style.js")
+
+  .addEntry("members_registration", "./assets/js/pages/members/registration.js")
+  .addEntry("members_login", "./assets/js/pages/members/login.js")
 
   /*
    * Core
    */
-  .splitEntryChunks()
-  .enableSingleRuntimeChunk()
+  //.splitEntryChunks()
+  //.enableSingleRuntimeChunk()
   .cleanupOutputBeforeBuild()
   .enableBuildNotifications()
   //.enableSourceMaps(!Encore.isProduction())

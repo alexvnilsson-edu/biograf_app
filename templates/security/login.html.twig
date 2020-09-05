@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Logga in{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <form method="post">
+      <div class="d-flex mb-3 flex-row justify-space-between align-items-center">
+        <a
+          href="/"
+          class="d-flex flex-row align-items-center px-2 mr-2"
+        >
+          <i class="fas fa-chevron-left fa-lg"></i>
+        </a>
+        <h1 class="my-0">Inloggning för medlemmar</h1>
+      </div>
+
+      <div class="container p-3 bg-light" style="max-width: 25em">
+        <h3 class="mt-0 mb-3 text-dark">Inloggningsuppgifter</h3>
+
+        <div class="form-group">
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            placeholder="E-postadress"
+            value="{{ last_username }}"
+            required
+            autofocus
+          />
+        </div>
+
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            placeholder="Lösenord"
+            required
+          />
+        </div>
+
+        <div class="d-flex justify-content-end mt-1">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
+            <button type="submit" class="btn btn-primary">
+                Logga in
+            </button>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center mt-3">
+        <a href="/medlemmar/registrering" class="btn btn-link">
+          Registrera medlemskap
+        </a>
+      </div>
+    </form>
+  </div>
+{% endblock %}

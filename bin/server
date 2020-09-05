@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+
+function usage() {
+    local usage_text=("Usage: server [options] start|stop"
+    ""
+    "Options:"
+    "   -s|--stop: stop (existing) server before starting"
+    )
+
+    printf "%s\n" "${usage_text[@]}"
+}
+
+# Arguments
+arg_command=""
+
+# Options
+declare -A opts=( [stop]=false )
+
+while :; do
+    case $1 in
+        start) arg_command=start
+        ;;
+        stop) arg_command=stop
+        ;;
+        test) arg_command=test
+        ;;
+        -s|--stop) opts[stop]=true
+        ;;
+        *) break
+        ;;
+    esac
+    shift
+done
+
+ENV_DEFAULT=.env.local
+ENV_FALLBACK=.env
+
+function stop_server() {
+    symfony server:stop
+}
+
+function start_server() {
+    args_extra="$@"
+
+    symfony server:start -d $args_extra
+}
+
+if [[ -f $ENV_DEFAULT ]]; then
+    source $ENV_DEFAULT
+elif [[ -f $ENV_FALLBACK ]]; then
+    source $ENV_FALLBACK
+fi
+
+start_server_args=""
+
+if [[ ! -z $SERVER_PORT ]] && [[ $SERVER_PORT != 1 ]]; then
+    start_server_args="$start_server_args --no-tls"
+fi
+
+if [[ ! -z $SERVER_PORT ]]; then
+    start_server_args="$start_server_args --port=$SERVER_PORT"
+fi
+
+case $arg_command in
+    start)
+        [[ "${opts[stop]}" = true ]] && stop_server
+        start_server "$start_server_args"
+    ;;
+    stop)
+        stop_server
+    ;;
+    *) usage; exit 1
+    ;;
+esac

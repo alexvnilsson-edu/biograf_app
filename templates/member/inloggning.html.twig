@@ -1,14 +1,6 @@
 {% extends "react_base.html.twig" %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    {{ encore_entry_link_tags('members_login') }}
-{% endblock %}
-
 {% block javascripts %}
     {{ parent() }}
-    {#<script>
-        window.APP_CSRF_TOKEN = "{{ csrf_token(csrf_token_name) }}";
-    </script>#}
     {{ encore_entry_script_tags('members_login') }}
 {% endblock %}
