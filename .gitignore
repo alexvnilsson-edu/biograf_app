@@ -23,4 +23,6 @@ yarn-error.log
 ###> friendsofphp/php-cs-fixer ###
 /.php_cs
 /.php_cs.cache
+/.phpdoc
+/**/.phpdoc
 ###< friendsofphp/php-cs-fixer ###
