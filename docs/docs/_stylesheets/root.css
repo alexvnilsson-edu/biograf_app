@@ -3,6 +3,7 @@
     --md-default-fg-color--light:        hsl(0, 0%, 10%);
     --md-default-fg-color--lighter:      hsl(0, 0%, 13%);
     --md-default-fg-color--lightest:     hsl(0, 0%, 16%);
+    --md-default-fg-color--inverse:      hsl(0, 0%, 92%);
     --md-default-bg-color:               hsl(0, 0%, 93%);
     --md-default-bg-color--light:         hsl(0, 0%, 96%);
     --md-default-bg-color--lighter:       hsl(0, 0%, 99%);

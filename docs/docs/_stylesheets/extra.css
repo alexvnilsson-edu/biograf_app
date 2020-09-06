@@ -2,6 +2,16 @@ body {
     cursor: default;
 }
 
+/* ---- Mobile drawer ---- */
+.md-nav--primary .md-nav__title {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--md-default-fg-color--inverse);
+}
+.md-nav--primary .md-nav__item {
+    border: 0;
+}
+
 /* ---- Footer ---- */
 html .md-footer-meta.md-typeset a {
     color: var(--md-primary-fg-color--light);
