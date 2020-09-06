@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies
         uses: php-actions/composer@v2
         with:
-          command: install --dev --prefer-dist
+          command: install --no-scripts --prefer-dist
       - run: |
           rm -f ${{ env.DOCS_DIR }}/${{ env.DOCS_REFERENCE_DIR }}
           vendor/bin/phpdoc-md
