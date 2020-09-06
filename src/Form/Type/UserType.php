@@ -10,7 +10,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
-class MemberType extends AbstractType {
+class UserType extends AbstractType
+{
     /**
      * @Assert\NotBlank
      * @Assert\Email(
@@ -21,11 +22,17 @@ class MemberType extends AbstractType {
 
     /**
      * @Assert\NotBlank
+     * @Assert\Length(
+     *  max = 4096
+     * )
      */
     public $password;
 
     /**
      * @Assert\IdenticalTo(propertyPath="password")
+     * @Assert\Length(
+     *  max = 4096
+     * )
      */
     public $passwordConfirm;
 
@@ -38,7 +45,7 @@ class MemberType extends AbstractType {
     /**
      * @Assert\Type("string")
      */
-    public $surname;
+    public $lastname;
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -47,6 +54,6 @@ class MemberType extends AbstractType {
             ->add("password", PasswordType::class)
             ->add("passwordConfirm", PasswordType::class)
             ->add("firstname", TextType::class)
-            ->add("surname", TextType::class);
+            ->add("lastname", TextType::class);
     }
 }

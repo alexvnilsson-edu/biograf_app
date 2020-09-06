@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registrera dig
+{% endblock %}
+
+{% block body %}
+	<div class="container my-5">
+        {{ form_start(form) }}
+        
+		{% if form_errors(form) %}
+			<div class="alert alert-danger">{{ form_errors(form) }}</div>
+		{% endif %}
+
+		<div class="d-flex mb-3 flex-row justify-space-between align-items-center">
+			<a href="/" class="d-flex flex-row align-items-center px-2 mr-2">
+				<i class="fas fa-chevron-left fa-lg"></i>
+			</a>
+			<h1 class="my-0">Registrera ny kund</h1>
+        </div>
+        
+		<div class="container p-3 bg-light">
+			<h3 class="mt-0 mb-3 text-dark">Inloggningsuppgifter</h3>
+
+			<div class="form-group">
+                {{ form_widget(form.email, { required: true, attr: { class: "form-control", placeholder: "E-postadress", autofocus: true }}) }}
+			</div>
+
+			<div class="row">
+				<div class="col">
+                    {{ form_widget(form.password, { required: true, attr: { type: "password", class: "form-control", placeholder: "Lösenord" }}) }}
+				</div>
+
+				<div class="col">
+                    {{ form_widget(form.passwordConfirm, { required: true, attr: { type: "password", class: "form-control", placeholder: "Bekräfta lösenord" }}) }}
+				</div>
+			</div>
+
+			<hr/>
+
+			<h3 class="mt-0 mb-3 text-dark">Personuppgifter</h3>
+
+			<div class="row">
+				<div class="col">
+                    {{ form_widget(form.firstname, { required: true, attr: { class: "form-control", placeholder: "Tilltalsnamn" }}) }}
+				</div>
+
+				<div class="col">
+                    {{ form_widget(form.lastname, { attr: { class: "form-control", placeholder: "Efternamn" }}) }}
+				</div>
+			</div>
+		</div>
+
+		<div class="d-flex justify-content-end mt-1">
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token('user-registration') }}"/>
+			<button type="submit" class="btn btn-primary">
+				Registrera
+			</button>
+		</div>
+		{{ form_end(form) }}
+	</div>
+{% endblock %}

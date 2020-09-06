@@ -4,8 +4,10 @@ namespace App\Service;
 
 use App\Entity\KundInloggning;
 use App\Entity\KundPerson;
+use App\Entity\User;
 use App\Form\Type\MemberAuthenticationType;
 use App\Form\Type\MemberType;
+use App\Form\Type\UserType;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
@@ -14,10 +16,12 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class MemberManager {
+class MemberManager
+{
     public static string $CSRF_TOKEN_NAME = "member-authentication";
 
     // Vilken krypteringsalogirithm vi vill använda, kolla tillgängliga algos med hash_algos().
+    protected static string $PASSWORD_SALT_HASH_ALGORITHM = "sha1";
     protected static string $PASSWORD_HASH_ALGORITHM = "sha512";
     
 
@@ -32,37 +36,41 @@ class MemberManager {
         $this->passwordEncoder = $passwordEncoder;
     }
 
-    private function createSalt() {
+    private function createSalt(User $user)
+    {
         // Här använder vi random_int istället för rand/mt_rand
         // Läs mer: https://www.php.net/manual/en/function.random-int.php
         $r = random_int((PHP_INT_MIN + 512), (PHP_INT_MAX - 512));
-        return hash(MemberManager::$PASSWORD_HASH_ALGORITHM, $r);
+        return hash(MemberManager::$PASSWORD_SALT_HASH_ALGORITHM, $r . $user->getEmail());
     }
 
-    private function createHashedPassword(string $password, string $salt) {
+    private function createHashedPassword(string $password, string $salt)
+    {
         return hash(MemberManager::$PASSWORD_HASH_ALGORITHM, $salt . $password);
     }
 
-    public function create(MemberType $memberType, bool $dryRun = false) {
-        $member = new KundInloggning();
-        $member->setEmailAdress($memberType->email);
-        $member->setLösenordSalt($this->createSalt());
-        $member->setLösenord($this->createHashedPassword($memberType->password, $member->getLösenordSalt()));
-        $member->setFörnamn($memberType->firstname);
-        $member->setEfternamn($memberType->surname);
+    public function create(UserType $userForm, bool $dryRun = false)
+    {
+        $user = new User();
+        $user->setEmail($userForm->email);
+        $user->setSalt($this->createSalt($user));
+        $user->setPassword($this->passwordEncoder->encodePassword($user, $userForm->password));
+        $user->setFirstname($userForm->firstname);
+        $user->setLastname($userForm->lastname);
 
-        $this->entityManager->persist($member);
+        $this->entityManager->persist($user);
 
         if (!$dryRun) {
             $this->entityManager->flush();
         } else {
-            $member->setId(random_int(1, 100));
+            $user->setId(random_int(1, 100));
         }
 
-        return $member;
+        return $user;
     }
 
-    public function authenticate(MemberAuthenticationType $memberAuthentication) {
+    public function authenticate(MemberAuthenticationType $memberAuthentication)
+    {
         $member = $this->entityManager->getRepository(KundInloggning::class)->findOneBy([
             "emailAdress" => $memberAuthentication->email
         ]);
@@ -81,7 +89,8 @@ class MemberManager {
         return $member;
     }
     
-    public function get(int $id) {
+    public function get(int $id)
+    {
         $member = $this->entityManager->getRepository(KundInloggning::class)->find($id);
 
         if (!$member) {
@@ -93,7 +102,8 @@ class MemberManager {
         return $member;
     }
 
-    private function getToken(KundInloggning $member): string {
+    private function getToken(KundInloggning $member): string
+    {
         return $this->tokenManager->create($member);
     }
 }

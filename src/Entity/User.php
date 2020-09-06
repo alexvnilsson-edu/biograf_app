@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Serializable;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User.
@@ -31,7 +33,7 @@ class User implements UserInterface
     }
 
     /**
-     * @ORM\Column(name="email", type="string", length=128, nullable=false)
+     * @ORM\Column(name="email", type="string", length=128, nullable=false, unique=true)
      */
     private string $email;
 
@@ -40,12 +42,12 @@ class User implements UserInterface
         return $this->email;
     }
 
-    public function getEmailAdress()
+    public function getEmail()
     {
         return $this->email;
     }
-
-    public function setEmailAdress($value)
+    
+    public function setEmail($value)
     {
         $this->email = $value;
     }
@@ -55,7 +57,7 @@ class User implements UserInterface
      *
      * @ORM\Column(name="email_confirmed", type="binary", nullable=true)
      */
-    private bool $emailConfirmed;
+    private ?bool $emailConfirmed = false;
 
     public function getEmailConfirmed()
     {
@@ -82,6 +84,25 @@ class User implements UserInterface
     public function setPassword($value)
     {
         $this->password = $value;
+    }
+
+    /**
+     * @Assert\NotBlank
+     * @Assert\Regex(
+     *      pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/",
+     *      message="Use 1 upper case letter, 1 lower case letter, and 1 number"
+     * )
+     */
+    private ?string $plainPassword;
+
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+    
+    public function setPlainPassword($value)
+    {
+        $this->plainPassword = $value;
     }
 
     /**
@@ -150,15 +171,58 @@ class User implements UserInterface
         $this->apiToken = $value;
     }
 
+    private array $roles = array();
+
     /**
      * @return array|string[]
      */
     public function getRoles()
     {
-        return ['ROLE_USER'];
+        $roles = $this->roles;
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $value)
+    {
+        $this->roles = $value;
     }
 
     public function eraseCredentials()
     {
+        $this->setPlainPassword(null);
     }
+
+    /**
+     * Internal methods
+     */
+
+    // public function serialize()
+    // {
+    //     return serialize(array(
+    //         $this->id,
+    //         $this->email,
+    //         $this->emailConfirmed,
+    //         $this->password,
+    //         $this->salt,
+    //         $this->firstname,
+    //         $this->lastname,
+    //         $this->apiToken
+    //     ));
+    // }
+
+    // public function unserialize($serialized)
+    // {
+    //     list(
+    //         $this->id,
+    //         $this->email,
+    //         $this->emailConfirmed,
+    //         $this->password,
+    //         $this->salt,
+    //         $this->firstname,
+    //         $this->lastname,
+    //         $this->apiToken
+    //         ) = unserialize($serialized);
+    // }
 }

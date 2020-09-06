@@ -1,1 +1,9 @@
+$enable-caret: false;
 $enable-rounded: false;
+$enable-shadows: true;
+$enable-responsive-font-sizes: true;
+
+$font-family-sans-serif: -apple-system, system-ui, BlinkMacSystemFont, "Open Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$font-family-serif:      Georgia, "Times New Roman", Times, serif !default;
+$font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base:       $font-family-sans-serif !default;

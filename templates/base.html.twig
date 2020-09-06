@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Biograf{% endblock %}</title>
+        {{ include('core/viewport.html.twig') }}
         {% block stylesheets %}
         {{ encore_entry_link_tags('style') }}
         {% endblock %}

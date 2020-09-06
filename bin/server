@@ -22,6 +22,8 @@ while :; do
         ;;
         stop) arg_command=stop
         ;;
+        restart) arg_command=restart
+        ;;
         test) arg_command=test
         ;;
         -s|--stop) opts[stop]=true
@@ -68,6 +70,10 @@ case $arg_command in
     ;;
     stop)
         stop_server
+    ;;
+    restart)
+        stop_server
+        start_server "$start_server_args"
     ;;
     *) usage; exit 1
     ;;

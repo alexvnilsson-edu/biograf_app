@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
 import ReactDOM from "react-dom";
-//import "@fortawesome/fontawesome-free/js/all.js";
 
 const CUSTOMER_FORM_DEFAULTS = {
   email: "",
   password: "",
   passwordConfirm: "",
   firstname: "",
-  surname: "",
+  lastname: "",
 };
 
 class CustomerRegistration extends Component {
@@ -52,11 +51,9 @@ class CustomerRegistration extends Component {
   }
 
   handleFormSubmit(e) {
-    console.log("Skickar data till server:", this.state.form);
-
     axios({
       method: "post",
-      url: `${window.APP_API_ENDPOINT}/api/medlemmar/registrera`,
+      url: `${window.APP_API_ENDPOINT}/register`,
       data: this.state.form,
     })
       .then((response) => {
@@ -70,7 +67,6 @@ class CustomerRegistration extends Component {
           member: response.data,
           form: CUSTOMER_FORM_DEFAULTS,
         });
-        console.log("Svar från server:", this.state.member);
       })
       .catch((reason) => {
         console.error("Felsvar från server:", reason);
@@ -181,9 +177,9 @@ class CustomerRegistration extends Component {
                 <input
                   type="text"
                   className="form-control"
-                  name="surname"
+                  name="lastname"
                   placeholder="Efternamn"
-                  value={this.state.form.surname}
+                  value={this.state.form.lastname}
                   onChange={this.handleFormChange}
                 />
               </div>

@@ -27,7 +27,6 @@ Encore
   .addEntry("style", "./assets/js/style.js")
 
   .addEntry("members_registration", "./assets/js/pages/members/registration.js")
-  .addEntry("members_login", "./assets/js/pages/members/login.js")
 
   /*
    * Core
