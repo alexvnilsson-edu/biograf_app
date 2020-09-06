@@ -15,11 +15,15 @@ jobs:
         with:
           python-version: 3.x
       - run: pip install mkdocs-material mkdocs-awesome-pages-plugin
+      - name: Remove composer.json and composer.lock
+        run: |
+          rm -f -- composer.json composer.lock
       - name: Install dependencies
         uses: php-actions/composer@v2
         with:
-          command: require clean/phpdoc-md --dev
-      - run: |
+          command: require clean/phpdoc-md
+      - name: Clean up docs output (${{ env.DOCS_DIR }}/${{ env.DOCS_REFERENCE_DIR }}).
+        run: |
           rm -rf ${{ env.DOCS_DIR }}/${{ env.DOCS_REFERENCE_DIR }}
           mkdir -p ${{ env.DOCS_DIR }}/${{ env.DOCS_REFERENCE_DIR }}
       - run: |

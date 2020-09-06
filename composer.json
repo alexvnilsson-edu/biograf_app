@@ -5,6 +5,7 @@
         "php": ">=7.2.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "clean/phpdoc-md": "^0.19.1",
         "composer/package-versions-deprecated": "^1.11",
         "doctrine/doctrine-bundle": "^2.1",
         "doctrine/doctrine-migrations-bundle": "^3.0",
@@ -25,7 +26,6 @@
         "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {
-        "clean/phpdoc-md": "^0.19.1",
         "friendsofphp/php-cs-fixer": "^2.16",
         "symfony/maker-bundle": "^1.21",
         "symfony/stopwatch": "^5.1",
