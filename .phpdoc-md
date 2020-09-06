@@ -1,0 +1,27 @@
+<?php
+return (object)[
+    'rootNamespace' => 'App', 
+    'destDirectory' => 'docs/docs/reference',
+    'format' => 'github',
+    'classes' => [
+        '\App\Controller\SecurityController',
+        '\App\Controller\MemberController',
+        '\App\Controller\IndexController',
+        '\App\Controller\Api\ApiBaseController',
+        '\App\Controller\Api\MovieController',
+        '\App\Form\Type\MemberAuthenticationType',
+        '\App\Form\Type\UserType',
+        '\App\Service\MovieManager',
+        '\App\Service\MemberManager',
+        '\App\Security\LoginFormAuthenticator',
+        '\App\Security\TokenAuthenticator',
+        '\App\Kernel',
+        '\App\Entity\Auditorium',
+        '\App\Entity\Cinema',
+        '\App\Entity\City',
+        '\App\Entity\Movie',
+        '\App\Entity\MovieCover',
+        '\App\Entity\MovieGenre',
+        '\App\Entity\User',
+    ],
+];
