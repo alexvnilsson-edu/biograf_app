@@ -8,10 +8,28 @@ theme:
     primary: red
     accent: blue
 extra_css:
-  - styles/extra.css
+  - _stylesheets/root.css
+  - _stylesheets/extra.css
+  - _stylesheets/highlight.css
+  - _stylesheets/details.css
 markdown_extensions:
+  - admonition
+  - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.inlinehilite:
+      css_class: 'code_inline'
+      style_plain_text: true
   - pymdownx.highlight:
       use_pygments: true
       linenums: true
-      linenums_style: pymdownx.inline
+      linenums_style: pymdownx-inline
+# nav:
+#   - Start: 'index.md'
+#   - 'Symfony CLI':
+#     - Introduktion: 'symfony-cli/introduction.md'
+#   - Databas:
+#     - Introduktion: 'database/introduction.md'
+#     - Entiteter: 'database/entities.md'
+plugins:
+  - awesome-pages:
+      collapse_single_pages: false
