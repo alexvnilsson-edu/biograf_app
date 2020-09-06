@@ -1,0 +1,17 @@
+site_name: Biograf-projektet
+theme:
+  name: material
+  language: sv
+  font:
+    text: Open Sans
+  palette:
+    primary: red
+    accent: blue
+extra_css:
+  - styles/extra.css
+markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      use_pygments: true
+      linenums: true
+      linenums_style: pymdownx.inline
