@@ -14,6 +14,11 @@ jobs:
         with:
           python-version: 3.x
       - run: pip install mkdocs-material mkdocs-awesome-pages-plugin
+      - name: Install dependencies
+        uses: php-actions/composer@v2
+        with:
+          command: composer install --prefer-dist
       - run: |
+          vendor/bin/phpdoc-md
           cd ${{ env.DOCS_DIR }}
           mkdocs gh-deploy --force
