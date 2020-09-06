@@ -11,6 +11,9 @@ body {
 .md-nav--primary .md-nav__item {
     border: 0;
 }
+.md-nav--primary .md-nav__title~.md-nav__list {
+    box-shadow: none;
+}
 
 /* ---- Footer ---- */
 html .md-footer-meta.md-typeset a {

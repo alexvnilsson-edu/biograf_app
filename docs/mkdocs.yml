@@ -36,8 +36,6 @@ markdown_extensions:
       style_plain_text: true
   - pymdownx.highlight:
       use_pygments: true
-      linenums: true
-      linenums_style: pymdownx-inline
   - toc:
       permalink: true
 # nav:
