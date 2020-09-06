@@ -7,7 +7,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      DOCS_DIR: docs/
+      DOCS_DIR: docs
       DOCS_REFERENCE_DIR: docs/reference
     steps:
       - uses: actions/checkout@v2
@@ -20,7 +20,7 @@ jobs:
         with:
           command: install --no-scripts --prefer-dist
       - run: |
-          rm -f ${{ env.DOCS_DIR }}/${{ env.DOCS_REFERENCE_DIR }}
+          rm -rf ${{ env.DOCS_DIR }}/${{ env.DOCS_REFERENCE_DIR }}
           vendor/bin/phpdoc-md
           cd ${{ env.DOCS_DIR }}
           mkdocs gh-deploy --force
