@@ -1,21 +1,36 @@
 site_name: Biograf-projektet
+site_url: https://docs.biograf.edu.alexvnilsson.se
+site_author: Alex V. Nilsson
+copyright: '2020'
+social:
+  website: https://alexvnilsson.se
+repo_url: https://github.com/alexvnilsson-edu/biograf_app
+repo_name: biograf_app
 theme:
   name: material
   language: sv
+  custom_dir: overrides
   font:
     text: Open Sans
   palette:
     primary: red
     accent: blue
+  features:
+    - tabs
+    - navigation.expand
 extra_css:
   - _stylesheets/root.css
   - _stylesheets/extra.css
   - _stylesheets/highlight.css
   - _stylesheets/details.css
+  - _stylesheets/typography.css
 markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - footnotes
+  - markdown_include.include:
+      base_path: docs/
   - pymdownx.inlinehilite:
       css_class: 'code_inline'
       style_plain_text: true
@@ -23,6 +38,8 @@ markdown_extensions:
       use_pygments: true
       linenums: true
       linenums_style: pymdownx-inline
+  - toc:
+      permalink: true
 # nav:
 #   - Start: 'index.md'
 #   - 'Symfony CLI':
