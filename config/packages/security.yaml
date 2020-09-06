@@ -1,12 +1,12 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     encoders:
-        App\Entity\KundInloggning:
+        App\Entity\User:
             algorithm: sha512
     providers:
         app_user_provider:
             entity:
-                class: App\Entity\KundInloggning
+                class: App\Entity\User
                 property: emailAdress
     firewalls:
         dev:
@@ -18,7 +18,7 @@ security:
             lazy: true
             provider: app_user_provider
             logout:
-                path: logout
+                path: security_logout
             guard:
                 authenticators:
                   - App\Security\LoginFormAuthenticator
