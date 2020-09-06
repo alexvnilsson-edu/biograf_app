@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DOCS_DIR: docs/
+      DOCS_REFERENCE_DIR: docs/reference
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
@@ -17,8 +18,9 @@ jobs:
       - name: Install dependencies
         uses: php-actions/composer@v2
         with:
-          command: composer install --prefer-dist
+          command: install --dev --prefer-dist
       - run: |
+          rm -f ${{ env.DOCS_DIR }}/${{ env.DOCS_REFERENCE_DIR }}
           vendor/bin/phpdoc-md
           cd ${{ env.DOCS_DIR }}
           mkdocs gh-deploy --force
