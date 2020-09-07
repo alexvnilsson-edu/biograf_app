@@ -53,9 +53,10 @@ markdown_extensions:
 nav:
   - Komma igång:
     - Första stegen:
-      - Initiera projektet: guidelines/first-steps/init-project.md
+      - guidelines/first-steps/init-project.md
+      - guidelines/first-steps/migrate-database.md
     - Databas:
-      - guidelines/database/README.md
+      - Översikt: guidelines/database/README.md
       - guidelines/database/entities.md
   - Symfony:
     - Symfony CLI:

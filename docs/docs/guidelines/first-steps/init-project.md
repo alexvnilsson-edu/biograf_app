@@ -1,4 +1,4 @@
-# Initiera projektet i lokal miljö
+# Initiera projektet
 
 ## Förkrav
 

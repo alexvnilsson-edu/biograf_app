@@ -16,3 +16,5 @@ class User extends UserInterface {
     private $[kolumn-namn];
 }
 ```
+
+Se [App\Entity\User](../../reference/Entity/User.md).
