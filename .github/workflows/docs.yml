@@ -24,6 +24,6 @@ jobs:
           rm -rf ${{ env.DOCS_DIR }}/${{ env.DOCS_REFERENCE_DIR }}
           mkdir -p ${{ env.DOCS_DIR }}/${{ env.DOCS_REFERENCE_DIR }}
       - run: |
-          vendor/bin/phpdoc-md
+          docs/bin/phpdoc-md
           cd ${{ env.DOCS_DIR }}
           mkdocs gh-deploy --force
