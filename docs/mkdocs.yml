@@ -61,9 +61,9 @@ markdown_extensions:
 
 # Plugins
 plugins:
-  - search
   - img2fig
-  - awesome-pages
+  - awesome-pages:
+      collapse_single_pages: true
 
 # Navigation
 # nav:

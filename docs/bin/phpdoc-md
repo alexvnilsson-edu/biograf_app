@@ -21,3 +21,6 @@ vendor/bin/phpdoc-md
 [[ $CWD_DOCS = 1 ]] && cd docs
 
 cp $DOCS_ROOT/_skeleton/reference/.pages $DOCS_ROOT/docs/reference/.pages
+
+# Ersätt autogenererad README.md med egen version.
+cp $DOCS_ROOT/_skeleton/reference/README.md $DOCS_ROOT/docs/reference/README.md
