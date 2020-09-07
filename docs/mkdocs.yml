@@ -1,6 +1,7 @@
 site_name: Biograf-projektet
 site_url: https://docs.biograf.edu.alexvnilsson.se
 site_author: Alex V. Nilsson
+edit_uri: ''
 copyright: '2020'
 social:
   website: https://alexvnilsson.se
@@ -12,6 +13,7 @@ theme:
   custom_dir: overrides
   font:
     text: Open Sans
+    code: Fira Code
   palette:
     primary: red
     accent: blue
@@ -29,6 +31,12 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
   - footnotes
+  - def_list
+  - pymdownx.tabbed
+  - pymdownx.smartsymbols
+  - pymdownx.emoji
+  - pymdownx.magiclink:
+      repo_url_shortener: true
   - markdown_include.include:
       base_path: docs/
   - pymdownx.inlinehilite:
@@ -36,15 +44,42 @@ markdown_extensions:
       style_plain_text: true
   - pymdownx.highlight:
       use_pygments: true
+      linenums: false
   - toc:
-      permalink: true
-# nav:
-#   - Start: 'index.md'
-#   - 'Symfony CLI':
-#     - Introduktion: 'symfony-cli/introduction.md'
-#   - Databas:
-#     - Introduktion: 'database/introduction.md'
-#     - Entiteter: 'database/entities.md'
-plugins:
-  - awesome-pages:
-      collapse_single_pages: false
+      permalink: false
+# plugins:
+#   - awesome-pages:
+#       collapse_single_pages: false
+nav:
+  - Komma igång:
+    - Första stegen:
+      - Initiera projektet: guidelines/first-steps/init-project.md
+    - Databas:
+      - guidelines/database/README.md
+      - guidelines/database/entities.md
+  - Symfony:
+    - Symfony CLI:
+      - symfony/cli/index.md
+      - symfony/cli/symfony-composer.md
+  - Referenser:
+    - Översikt: ./reference-overview.md
+    - Controller:
+      - IndexController: reference/Controller/IndexController.md
+      - MemberController: reference/Controller/MemberController.md
+      - SecurityController: reference/Controller/SecurityController.md
+    - Entity:
+      - Auditorium: reference/Entity/Auditorium.md
+      - Cinema: reference/Entity/Cinema.md
+      - City: reference/Entity/City.md
+      - Movie: reference/Entity/Movie.md
+      - MovieCover: reference/Entity/MovieCover.md
+      - MovieGenre: reference/Entity/MovieGenre.md
+      - User: reference/Entity/User.md
+    - Form:
+      - Type:
+        - UserType: reference/Form/Type/UserType.md
+    - Security:
+      - LoginFormAuthenticator: reference/Security/LoginFormAuthenticator.md
+    - Service:
+      - MemberManager: reference/Service/MemberManager.md
+      - MovieManager: reference/Service/MovieManager.md

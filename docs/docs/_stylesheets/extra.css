@@ -2,7 +2,7 @@ body {
     cursor: default;
 }
 
-/* ---- Mobile drawer ---- */
+/* ---- Navigationsvy ---- */
 .md-nav--primary .md-nav__title {
     font-size: 22px;
     font-weight: 500;
@@ -11,8 +11,35 @@ body {
 .md-nav--primary .md-nav__item {
     border: 0;
 }
+/* .md-typeset table:not([class]) td {
+    border: 0;
+} */
 .md-nav--primary .md-nav__title~.md-nav__list {
     box-shadow: none;
+}
+
+@media screen and (min-width: 76.25em) {
+    /* Navigeringsvyn på stora skärmar placerar caret till vänster om länk. */
+
+    .md-nav.md-nav--primary .md-nav__item {
+        position: relative;
+        overflow: visible;
+    }
+
+    .md-nav.md-nav--primary .md-nav__item .md-nav__link .md-nav__icon.md-nav__icon--left {
+        float: left;
+        position: absolute;
+        top: 0;
+        left: -0.25rem;
+    }
+}
+
+/* ---- Content tabs ---- */
+.md-typeset .tabbed-set {
+    background-color: var(--md-default-bg-color--lighter);
+}
+.md-typeset .tabbed-content {
+    background-color: var(--md-default-bg-color--light);
 }
 
 /* ---- Footer ---- */
