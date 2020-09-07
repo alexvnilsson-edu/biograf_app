@@ -11,7 +11,7 @@ Biografen har idag ingen ordentlig webbplats för att kunna konkurrera på markn
 Enligt 2019-årets SOM-undersökningen gjord av Göteborgs universitet besöker 44% av respondenterna en biograf minst en gång i halvåret[^1]. En rapport från Svenska Filminstitutet påstår också att en genomsnittlig svensk hellre ser en film illegalt än att gå på bio[^2].
 
 <figure>
-    <img src="\assets\images\som-2019-fritidsaktiviteter.png" width="480" />
+    <img src=".\img\som-2019-fritidsaktiviteter.png" width="480" />
     <figcaption>Diagram som visar deltagande i fritidsaktiviteter.</figcaption>
 </figure>
 
@@ -20,7 +20,7 @@ Enligt 2019-årets SOM-undersökningen gjord av Göteborgs universitet besöker 
 Svenska Filminstitutet utförde en undersökning året 2013 där de kartlagde demografierna som ser film på bio[^3].
 
 <figure>
-    <img src="\assets\images\sfi-2013-andelar-av-filmkonsumter.png" width="280" />
+    <img src=".\img\sfi-2013-andelar-av-filmkonsumter.png" width="280" />
     <figcaption>Procentuell andel av biobesökare per folkgrupp av total filmkonsumtion.<br /><strong>Källa:</strong> Publikens förändrade beteende, 2013, s. 13.</figcaption>
 </figure>
 
@@ -29,7 +29,7 @@ Svenska Filminstitutet utförde en undersökning året 2013 där de kartlagde de
 Från Internetstiftelsens undersökning *Svenskarna och internet* från 2019.
 
 <figure>
-    <img src="\assets\images\is-2018-mobilsurfande-aldersgrupper.png" width="480">
+    <img src=".\img\is-2018-mobilsurfande-aldersgrupper.png" width="480">
     <figcaption>Mobilsurfande bland åldersgrupperna.<br /><strong>Källa:</strong> Svenskarna och internet, 2018, s. 18.</figcaption>
 </figure>
 
@@ -38,7 +38,7 @@ Från Internetstiftelsens undersökning *Svenskarna och internet* från 2019.
 Samma undersökning visar också – som kanske inte är helt oväntat – att Internetanvändandet bland pensionärer är avsevärt lägre än övriga sysselsättningsgrupper.
 
 <figure>
-    <img src="\assets\images\is-2018-internetanvandare-sysselsattningar.png" width="480">
+    <img src=".\img\is-2018-internetanvandare-sysselsattningar.png" width="480">
     <figcaption>Andel av befolkningen som inte använder internet dagligen fördelat på sysselsättning.<br /><strong>Källa:</strong> Svenskarna och internet, 2018, s. 25.</figcaption>
 </figure>
 
