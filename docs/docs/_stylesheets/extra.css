@@ -3,12 +3,15 @@ body {
 }
 
 /* ---- Navigationsvy ---- */
-.md-nav--primary .md-nav__title {
-    font-size: 22px;
-    font-weight: 500;
-    color: var(--md-default-fg-color--inverse);
+.md-nav.md-nav--primary .md-nav__title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    /* color: var(--md-default-fg-color--darkest); */
 }
-.md-nav--primary .md-nav__item {
+.md-nav.md-nav--primary label.md-nav__title[for*="nav-"] {
+    color: var(--md-default-fg-color--darker);
+}
+.md-nav.md-nav--primary .md-nav__item {
     border: 0;
 }
 /* .md-typeset table:not([class]) td {

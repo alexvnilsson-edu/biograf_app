@@ -3,10 +3,13 @@
     --md-default-fg-color--light:        hsl(0, 0%, 25%);
     --md-default-fg-color--lighter:      hsl(0, 0%, 50%);
     --md-default-fg-color--lightest:     hsl(0, 0%, 75%);
+    --md-default-fg-color--dark:         hsl(0, 0%, 4%);
+    --md-default-fg-color--darker:       hsl(0, 0%, 2%);
+    --md-default-fg-color--darkest:      hsl(0, 0%, 0%);
     --md-default-fg-color--inverse:      hsl(0, 0%, 94%);
     --md-default-bg-color:               hsl(0, 0%, 93%);
-    --md-default-bg-color--light:         hsl(0, 0%, 96%);
-    --md-default-bg-color--lighter:       hsl(0, 0%, 99%);
+    --md-default-bg-color--light:        hsl(0, 0%, 96%);
+    --md-default-bg-color--lighter:      hsl(0, 0%, 99%);
     --md-default-bg-color--dark:         hsl(0, 0%, 90%);
     --md-default-bg-color--darker:       hsl(0, 0%, 87%);
     --md-default-bg-color--darkest:      hsl(0, 0%, 84%);
