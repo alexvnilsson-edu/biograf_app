@@ -10,15 +10,31 @@
 .md-typeset h4,
 .md-typeset h5,
 .md-typeset h6 {
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .md-typeset h1 {
-    margin: 0 0 .25em;
+    margin: 0 0 0;
 }
 
 .md-typeset h2 {
-    margin: .8em 0 .32em
+    margin: .8em 0 0;
+}
+
+.md-typeset h3 {
+    margin: .8em 0 0;
+}
+
+.md-typeset h4 {
+    margin: .8em 0 0;
+    font-size: .9rem;
+}
+
+.md-typeset h2 + p,
+.md-typeset h3 + p,
+.md-typeset h4 + p,
+.md-typeset h5 + p {
+    margin-top: 0;
 }
 
 /* Navigering: tabbar */
@@ -49,6 +65,27 @@
 /* Innehåll */
 .md-content .md-typeset h1 {
     font-weight: 700;
+}
+
+.md-typeset p, .md-typeset ul, .md-typeset ol, .md-typeset blockquote {
+    font-size: 0.75rem;
+}
+
+/* Figureetiketter */
+.md-typeset figcaption {
+    margin: 0 auto 0.5em auto;
+
+    font-size: .6rem;
+    font-style: normal;
+    font-weight: 400;
+}
+
+/* Fotnoter */
+.md-typeset a.footnote-ref {
+    font-weight: 600;
+    color: var(--md-default-fg-color--light);
+} .md-typeset a.footnote-ref:hover, .md-typeset a.footnote-ref:focus {
+    color: var(--md-default-fg-color--darkest);
 }
 
 /* ---- Colors ---- */

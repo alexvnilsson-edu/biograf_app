@@ -15,7 +15,7 @@ theme:
     text: Open Sans
     code: Fira Code
   palette:
-    primary: red
+    primary: hsl(4, 65%, 49%)
     accent: blue
   features:
     - tabs
@@ -32,9 +32,12 @@ markdown_extensions:
   - pymdownx.superfences
   - footnotes
   - def_list
+  - attr_list
   - pymdownx.tabbed
   - pymdownx.smartsymbols
   - pymdownx.emoji
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - pymdownx.magiclink:
       repo_url_shortener: true
   - markdown_include.include:
@@ -47,9 +50,9 @@ markdown_extensions:
       linenums: false
   - toc:
       permalink: false
-# plugins:
-#   - awesome-pages:
-#       collapse_single_pages: false
+plugins:
+  - search
+  - img2fig
 nav:
   - Komma igång:
     - Första stegen:
@@ -62,6 +65,9 @@ nav:
     - Symfony CLI:
       - symfony/cli/index.md
       - symfony/cli/symfony-composer.md
+  - Projektplan:
+      - Överblick: project/README.md
+      - Bakgrund och syfte: project/background.md
   - Referenser:
     - Översikt: ./reference-overview.md
     - Controller:

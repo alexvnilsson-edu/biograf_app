@@ -45,6 +45,17 @@ body {
     background-color: var(--md-default-bg-color--light);
 }
 
+/* ---- Tabeller ---- */
+
+/* Tabellrubriker */
+.md-typeset table:not([class]) th {
+    background-color: var(--md-default-bg-color--darkest);
+    color: var(--md-default-fg-color--darker);
+    font-size: .89rem;
+    padding: 0.5em 1em;
+    font-weight: 600;
+}
+
 /* ---- Footer ---- */
 html .md-footer-meta.md-typeset a {
     color: var(--md-primary-fg-color--light);
