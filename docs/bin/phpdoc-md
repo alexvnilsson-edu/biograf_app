@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+DOCS_ROOT=.
+DOCS_DIR=docs
+
+MKDOCS_FILE=mkdocs.yml
+
+CWD_DOCS=0
+
+if [[ -f "./${MKDOCS_FILE}" ]]; then
+    CWD_DOCS=1
+else
+    DOCS_ROOT=$DOCS_DIR
+fi
+
+# Om vi inte är i docs-katalo
+[[ $CWD_DOCS = 1 ]] && cd ..
+
+vendor/bin/phpdoc-md
+
+[[ $CWD_DOCS = 1 ]] && cd docs
+
+cp $DOCS_ROOT/_skeleton/reference/.pages $DOCS_ROOT/docs/reference/.pages
