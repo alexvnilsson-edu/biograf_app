@@ -24,11 +24,12 @@ class MovieController extends AbstractController
         $movies = $this->getDoctrine()->getRepository(Movie::class)->findAll();
 
         if (!$movies) {
-            throw new NotFoundHttpException("Inga filmer hittades.");
+            return new JsonResponse([
+                "items" => array(),
+                "error" => "No movies found."
+            ]);
         }
 
-
-
-        return new Response($serializer->serialize($movies, "json"));
+        return new JsonResponse(["items" => json_decode($serializer->serialize($movies, "json"))]);
     }
 }

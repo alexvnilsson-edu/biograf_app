@@ -28,7 +28,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/login", name="security_login", methods={"GET", "POST"})
+     * @Route("/login", name="security_login")
      */
     public function login()
     {
@@ -43,21 +43,21 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/login_check", name="security_login_check", methods={"POST", "GET"})
+     * @Route("/login_check", name="security_login_check")
      */
     public function login_check(Request $request)
     {
     }
 
     /**
-     * @Route("/logout", name="security_logout", methods={"GET"})
+     * @Route("/logout", name="security_logout")
      */
     public function logout()
     {
     }
 
     /**
-     * @Route("/register", name="security_register", methods={"GET", "POST"})
+     * @Route("/register", name="security_register")
      */
     public function register(Request $request)
     {
@@ -65,9 +65,12 @@ class SecurityController extends AbstractController
         $form = $this->createForm(UserType::class, $user);
 
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user = $form->getData();
+        if ($form->isSubmitted()) {
+            if (!$form->isValid()) {
+                throw new Exception($form->getErrors());
+            }
 
+            $user = $form->getData();
             $user = $this->memberManager->create($form->getData());
         }
 
