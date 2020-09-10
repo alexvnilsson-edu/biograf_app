@@ -11,6 +11,7 @@ return (object)[
         '\App\Controller\Api\MovieController',
         '\App\Form\Type\MemberAuthenticationType',
         '\App\Form\Type\UserType',
+        '\App\Repository\MovieRepository',
         '\App\Service\MovieManager',
         '\App\Service\MemberManager',
         '\App\Security\LoginFormAuthenticator',
