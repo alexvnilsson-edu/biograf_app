@@ -1,67 +1,66 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Registrera dig
+{% block title %}Registrera nytt medlemskap
 {% endblock %}
 
 {% block body %}
-	<div class="container mx-auto my-5" style="max-width: 24em">
-        {{ form_start(form) }}
-        
+	<div class="container mx-auto my-5" style="max-width: 32em">
+		{{ form_start(form) }}
+
 		{% if form_errors(form) %}
 			<div class="alert alert-danger">{{ form_errors(form) }}</div>
 		{% endif %}
 
-        <div class="mb-3">
-            <h2 class="my-0 text-black-50 text-nowrap">Registrera nytt medlemskap</h2>
-        </div>
-        
+		<div class="mb-3">
+			<h2 class="my-0 text-black-50 text-nowrap">Registrera nytt medlemskap</h2>
+		</div>
+
 		<div class="container p-3 rounded-sm bg-white shadow-sm">
-			<h4 class="mt-0 mb-3 text-uppercase text-muted">Inloggningsuppgifter</h4>
+			<h4 class="mt-0 mb-3 text-uppercase">Inloggningsuppgifter</h4>
 
 			<div class="form-group">
-                {{ form_widget(form.email, { required: true, attr: { class: "form-control", placeholder: "E-postadress", autofocus: true }}) }}
+				{{ form_widget(form.email, { required: true, attr: { class: "form-control", placeholder: "E-postadress", autofocus: true }}) }}
 			</div>
 
 			<div class="row">
 				<div class="col">
-                    {{ form_widget(form.password, { required: true, attr: { type: "password", class: "form-control", placeholder: "Lösenord" }}) }}
+					{{ form_widget(form.password, { required: true, attr: { type: "password", class: "form-control", placeholder: "Lösenord" }}) }}
 				</div>
 
 				<div class="col">
-                    {{ form_widget(form.passwordConfirm, { required: true, attr: { type: "password", class: "form-control", placeholder: "Bekräfta lösenord" }}) }}
+					{{ form_widget(form.passwordConfirm, { required: true, attr: { type: "password", class: "form-control", placeholder: "Bekräfta lösenord" }}) }}
 				</div>
 			</div>
 
 			<hr/>
 
-			<h4 class="mt-0 mb-3 text-uppercase text-muted">Personuppgifter</h4>
+			<h4 class="mt-0 mb-3 text-uppercase">Personuppgifter</h4>
 
 			<div class="row">
 				<div class="col">
-                    {{ form_widget(form.firstname, { required: true, attr: { class: "form-control", placeholder: "Tilltalsnamn" }}) }}
+					{{ form_widget(form.firstname, { required: true, attr: { class: "form-control", placeholder: "Tilltalsnamn" }}) }}
 				</div>
 
 				<div class="col">
-                    {{ form_widget(form.lastname, { attr: { class: "form-control", placeholder: "Efternamn" }}) }}
+					{{ form_widget(form.lastname, { attr: { class: "form-control", placeholder: "Efternamn" }}) }}
 				</div>
-            </div>
-            
-            <div class="d-flex justify-content-end mt-3">
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token('user-registration') }}"/>
-                <button type="submit" class="btn btn-primary text-uppercase">
-                    Registrera
-                </button>
-            </div>
+			</div>
+
+			<div class="d-flex justify-content-end mt-3">
+				<button type="submit" class="btn btn-primary text-uppercase">
+					Registrera
+				</button>
+			</div>
 		</div>
-        {{ form_end(form) }}
-        
-        <div class="d-flex flex-column align-items-center mt-3">
-            <p class="mb-0">
-                Har du redan ett konto?
-            </p>
-            <a href="{{ path('security_login') }}" class="btn btn-link">
-                Logga in instället
-            </a>
-        </div>
+		{{ form_end(form) }}
+
+		<div class="d-flex flex-column align-items-center mt-3">
+			<p class="mb-0">
+				Har du redan ett konto?
+			</p>
+			<a href="{{ path('security_login') }}" class="btn btn-link">
+				Logga in instället
+			</a>
+		</div>
 	</div>
 {% endblock %}
