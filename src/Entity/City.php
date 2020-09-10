@@ -13,34 +13,35 @@ use Doctrine\ORM\Mapping as ORM;
 class City
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
      */
     private $id;
 
-    public function getId() {
-        return $this->id;
-    }
-    
-    public function setId($value) {
-        $this->id = $value;
-    }
-
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="name", type="string", length=64, nullable=true)
+     * @ORM\Column(type="string", length=96)
      */
     private $name;
 
-    public function getName() {
+    //
+    // Getters and setters
+    //
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getName(): ?string
+    {
         return $this->name;
     }
     
-    public function setName($value) {
+    public function setName($value): self
+    {
         $this->name = $value;
+
+        return $this;
     }
 }

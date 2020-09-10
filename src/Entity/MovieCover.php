@@ -13,34 +13,35 @@ use Doctrine\ORM\Mapping as ORM;
 class MovieCover
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
      */
     private $id;
 
-    public function getId() {
-        return $this->id;
-    }
-    
-    public function setId($value) {
-        $this->id = $value;
-    }
-
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="image_filename", type="string", length=128, nullable=true)
+     * @ORM\Column(type="string", length=256)
      */
     private $imageFilename;
 
-    public function getImageFilename() {
+    //
+    // Getters and setters
+    //
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getImageFilename(): ?string
+    {
         return $this->imageFilename;
     }
     
-    public function setImageFilename($value) {
+    public function setImageFilename($value): self
+    {
         $this->imageFilename = $value;
+
+        return $this;
     }
 }

@@ -21,11 +21,13 @@ class Auditorium
      */
     private $id;
 
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
     
-    public function setId($value) {
+    public function setId($value)
+    {
         $this->id = $value;
     }
 
@@ -37,11 +39,13 @@ class Auditorium
      */
     private $cinema;
 
-    public function getCinema() {
+    public function getCinema()
+    {
         return $this->cinema;
     }
     
-    public function setCinema($value) {
+    public function setCinema($value)
+    {
         $this->cinema = $value;
     }
 
@@ -52,11 +56,13 @@ class Auditorium
      */
     private string $name;
 
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
     
-    public function setName($value) {
+    public function setName($value)
+    {
         $this->name = $value;
     }
 
@@ -67,11 +73,13 @@ class Auditorium
      */
     private $status;
 
-    public function getStatus() {
+    public function getStatus()
+    {
         return $this->status;
     }
     
-    public function setStatus($value) {
+    public function setStatus($value)
+    {
         $this->status = $value;
     }
 }

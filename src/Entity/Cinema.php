@@ -21,14 +21,6 @@ class Cinema
      */
     private int $id;
 
-    public function getId() {
-        return $this->id;
-    }
-    
-    public function setId($value) {
-        $this->id = $value;
-    }
-
     /**
      * @var string|null
      *
@@ -36,25 +28,45 @@ class Cinema
      */
     private $name;
 
-    public function getName() {
-        return $this->name;
-    }
-    
-    public function setName($value) {
-        $this->name = $value;
-    }
-
     /**
      * @ORM\ManyToOne(targetEntity="City")
      * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
      */
     private City $city;
 
-    public function getCity() {
+    public function getId()
+    {
+        return $this->id;
+    }
+    
+    public function setId($value): self
+    {
+        $this->id = $value;
+
+        return $this;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+    
+    public function setName($value): self
+    {
+        $this->name = $value;
+
+        return $this;
+    }
+
+    public function getCity()
+    {
         return $this->city;
     }
     
-    public function setCity($value) {
+    public function setCity($value): self
+    {
         $this->city = $value;
+
+        return $this;
     }
 }

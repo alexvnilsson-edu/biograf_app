@@ -13,51 +13,52 @@ use Doctrine\ORM\Mapping as ORM;
 class MovieGenre
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
      */
     private int $id;
-
-    public function getId()
-    {
-        return $this->id;
-    }
-    
-    public function setId($value)
-    {
-        $this->id = $value;
-    }
 
     /**
      * @ORM\Column(name="name", type="string", length=64, nullable=false)
      */
     private string $name;
 
+    /**
+     * @ORM\Column(type="integer", nullable=false)
+     */
+    private $movie;
+
+    //
+    // Getters and setters
+    //
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
     public function getName()
     {
         return $this->name;
     }
     
-    public function setName($value)
+    public function setName($value): self
     {
         $this->name = $value;
-    }
 
-    /**
-     * @ORM\Column(name="movie_id", type="integer", nullable=false)
-     */
-    private $movie;
+        return $this;
+    }
 
     public function getMovie()
     {
         return $this->movie;
     }
     
-    public function setMovie($value)
+    public function setMovie($value): self
     {
         $this->movie = $value;
+
+        return $this;
     }
 }

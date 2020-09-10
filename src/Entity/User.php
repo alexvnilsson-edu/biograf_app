@@ -2,8 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Serializable;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -16,33 +16,91 @@ use Symfony\Component\Validator\Constraints as Assert;
 class User implements UserInterface
 {
     /**
-     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
      */
-    private int $id;
+    private $id;
 
-    public function getId()
+    /**
+     * @ORM\Column(type="string", length=128, nullable=false, unique=true)
+     */
+    private $email;
+
+    /**
+     * @var binary|null
+     *
+     * @ORM\Column(type="binary", nullable=true)
+     */
+    private $emailConfirmed = false;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(type="string", length=160, nullable=true, options={"comment"="SHA-512 hash av lösenord."})
+     */
+    private $password;
+
+    /**
+     * @Assert\NotBlank
+     * @Assert\Regex(
+     *      pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/",
+     *      message="Use 1 upper case letter, 1 lower case letter, and 1 number"
+     * )
+     */
+    private $plainPassword;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(type="string", length=130, nullable=true)
+     */
+    private string $salt;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(type="string", length=64, nullable=true)
+     */
+    private string $firstname;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(type="string", length=64, nullable=true)
+     */
+    private string $lastname;
+
+    /**
+     * @ORM\Column(type="string", length=256, unique=true, nullable=true)
+     */
+    private $apiToken;
+
+    private array $roles = array();
+
+    /**
+     * @ORM\ManyToMany(targetEntity="MovieScreening")
+     * @ORM\JoinTable(name="users_movies",
+     *  joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *  inverseJoinColumns={@ORM\JoinColumn(name="movie_id", referencedColumnName="id")})
+     */
+    private $movieBookings;
+
+    //
+    // Getters and setters
+    //
+
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setId($value)
-    {
-        $this->id = $value;
-    }
-
-    /**
-     * @ORM\Column(name="email", type="string", length=128, nullable=false, unique=true)
-     */
-    private string $email;
-
-    public function getUsername()
+    public function getUsername(): ?string
     {
         return $this->email;
     }
 
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -52,126 +110,106 @@ class User implements UserInterface
         $this->email = $value;
     }
 
-    /**
-     * @var binary|null
-     *
-     * @ORM\Column(name="email_confirmed", type="binary", nullable=true)
-     */
-    private ?bool $emailConfirmed = false;
-
-    public function getEmailConfirmed()
+    public function getEmailConfirmed(): ?bool
     {
         return $this->emailConfirmed;
     }
-
-    public function setEmailConfirmed($value)
+    
+    public function setEmailConfirmed($value): self
     {
         $this->emailConfirmed = $value;
+    
+        return $this;
     }
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="password", type="string", length=160, nullable=true, options={"comment"="SHA-512 hash av lösenord."})
-     */
-    private string $password;
-
-    public function getPassword()
+    public function getPassword(): ?string
     {
         return $this->password;
     }
-
-    public function setPassword($value)
+    
+    public function setPassword($value): self
     {
         $this->password = $value;
+    
+        return $this;
     }
 
-    /**
-     * @Assert\NotBlank
-     * @Assert\Regex(
-     *      pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/",
-     *      message="Use 1 upper case letter, 1 lower case letter, and 1 number"
-     * )
-     */
-    private ?string $plainPassword;
-
-    public function getPlainPassword()
+    public function getPlainPassword(): ?string
     {
         return $this->plainPassword;
     }
     
-    public function setPlainPassword($value)
+    public function setPlainPassword($value): self
     {
         $this->plainPassword = $value;
+    
+        return $this;
     }
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="salt", type="string", length=130, nullable=true)
-     */
-    private string $salt;
-
-    public function getSalt()
+    public function getSalt(): ?string
     {
         return $this->salt;
     }
-
-    public function setSalt($value)
+    
+    public function setSalt($value): self
     {
         $this->salt = $value;
+    
+        return $this;
     }
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="firstname", type="string", length=64, nullable=true)
-     */
-    private string $firstname;
-
-    public function getFirstname()
+    public function getFirstname(): ?string
     {
         return $this->firstname;
     }
-
-    public function setFirstname($value)
+    
+    public function setFirstname($value): self
     {
         $this->firstname = $value;
+    
+        return $this;
     }
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="lastname", type="string", length=64, nullable=true)
-     */
-    private string $lastname;
-
-    public function getLastname()
+    public function getLastname(): ?string
     {
         return $this->lastname;
     }
-
-    public function setLastname($value)
+    
+    public function setLastName($value): self
     {
         $this->lastname = $value;
+    
+        return $this;
     }
 
-    /**
-     * @ORM\Column(name="api_token", type="string", length=256, unique=true, nullable=true)
-     */
-    private $apiToken;
+    public function getMovieBookings(): ?ArrayCollection
+    {
+        return $this->movieBookings;
+    }
+    
+    public function setMovieBookings($value): self
+    {
+        $this->movieBookings = $value;
 
-    public function getApiToken()
+        return $this;
+    }
+
+    public function getApiToken(): ?string
     {
         return $this->apiToken;
     }
-
-    public function setApiToken($value)
+    
+    public function setApiToken($value): self
     {
         $this->apiToken = $value;
+    
+        return $this;
     }
 
-    private array $roles = array();
+    public function __construct()
+    {
+        $this->movieBookings = new ArrayCollection();
+    }
 
     /**
      * @return array|string[]
@@ -193,36 +231,4 @@ class User implements UserInterface
     {
         $this->setPlainPassword(null);
     }
-
-    /**
-     * Internal methods
-     */
-
-    // public function serialize()
-    // {
-    //     return serialize(array(
-    //         $this->id,
-    //         $this->email,
-    //         $this->emailConfirmed,
-    //         $this->password,
-    //         $this->salt,
-    //         $this->firstname,
-    //         $this->lastname,
-    //         $this->apiToken
-    //     ));
-    // }
-
-    // public function unserialize($serialized)
-    // {
-    //     list(
-    //         $this->id,
-    //         $this->email,
-    //         $this->emailConfirmed,
-    //         $this->password,
-    //         $this->salt,
-    //         $this->firstname,
-    //         $this->lastname,
-    //         $this->apiToken
-    //         ) = unserialize($serialized);
-    // }
 }

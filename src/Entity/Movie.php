@@ -10,95 +10,37 @@ use Doctrine\ORM\Mapping as ORM;
  * Movie
  *
  * @ORM\Table(name="movie")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=MovieRepository::class)
  */
 class Movie
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
      */
     private int $id;
 
-    public function getId()
-    {
-        return $this->id;
-    }
-    
-    public function setId($value)
-    {
-        $this->id = $value;
-    }
-
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="title", type="string", length=128, nullable=true)
+     * @ORM\Column(type="string", length=192, nullable=false)
      */
     private string $name;
 
-    public function getName()
-    {
-        return $this->name;
-    }
-    
-    public function setName($value)
-    {
-        $this->name = $value;
-    }
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $yearOfProduction;
 
     /**
-     * @var int|null
-     *
-     * @ORM\Column(name="year_of_production", type="integer", nullable=true)
+     * @ORM\Column(type="integer", nullable=false)
      */
-    private int $yearOfProduction;
-
-    public function getYearOfProduction()
-    {
-        return $this->yearOfProduction;
-    }
-    
-    public function setYearOfProduction($value)
-    {
-        $this->yearOfProduction = $value;
-    }
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="year_of_release", type="integer", nullable=true)
-     */
-    private int $yearOfRelease;
-
-    public function getYearOfRelease()
-    {
-        return $this->yearOfRelease;
-    }
-    
-    public function setYearOfRelease($value)
-    {
-        $this->yearOfRelease = $value;
-    }
+    private $yearOfRelease;
 
     /**
      * @ORM\OneToOne(targetEntity="MovieCover")
      * @ORM\JoinColumn(name="movie_cover_id", referencedColumnName="id")
      */
-    private MovieCover $cover;
-
-    public function getCover()
-    {
-        return $this->cover;
-    }
-    
-    public function setCover($value)
-    {
-        $this->cover = $value;
-    }
+    private $cover;
 
     /**
      * @ORM\ManyToMany(targetEntity="MovieGenre")
@@ -106,20 +48,95 @@ class Movie
      *      joinColumns={@ORM\JoinColumn(name="movie_id", referencedColumnName="id")}
      * )
      */
-    private $genrer;
+    private $genres;
 
-    public function getGenrer(): Collection
-    {
-        return $this->genrer;
-    }
-    
-    public function setGenrer($value)
-    {
-        $this->genrer = $value;
-    }
+    /**
+     * @ORM\OneToMany(targetEntity="MovieScreening", mappedBy="movie")
+     */
+    private $screenings;
 
     public function __construct()
     {
-        $this->genrer = new ArrayCollection();
+        $this->genres = new ArrayCollection();
+        $this->screenings = new ArrayCollection();
+    }
+
+    //
+    // Getters and setters
+    //
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+    
+    public function setName($value): self
+    {
+        $this->name = $value;
+
+        return $this;
+    }
+
+    public function getYearOfProduction(): ?int
+    {
+        return $this->yearOfProduction;
+    }
+    
+    public function setYearOfProduction($value): self
+    {
+        $this->yearOfProduction = $value;
+
+        return $this;
+    }
+
+    public function getYearOfRelease(): ?int
+    {
+        return $this->yearOfRelease;
+    }
+    
+    public function setYearOfRelease($value): self
+    {
+        $this->yearOfRelease = $value;
+
+        return $this;
+    }
+
+    public function getCover(): ?MovieCover
+    {
+        return $this->cover;
+    }
+    
+    public function setCover($value): self
+    {
+        $this->cover = $value;
+
+        return $this;
+    }
+
+    public function getGenres(): Collection
+    {
+        return $this->genres;
+    }
+    
+    public function setGenres($value): self
+    {
+        $this->genres = $value;
+
+        return $this;
+    }
+
+    public function getScreenings(): ?ArrayCollection
+    {
+        return $this->screenings;
+    }
+    
+    public function setScreenings($value)
+    {
+        $this->screenings = $value;
     }
 }
