@@ -17,7 +17,11 @@ class IndexMoviesComponent extends Component {
       url: `${window.APP_API_ENDPOINT}/api/movies`,
     })
       .then(({ data }) => {
-        this.setState({ movies: [...this.state.movies, ...data] });
+        if (data.items) {
+          const movies = data.items;
+
+          this.setState({ movies: [...this.state.movies, ...movies] });
+        }
       })
       .catch((reason) => {});
   }
