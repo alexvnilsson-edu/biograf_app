@@ -2,6 +2,10 @@
 @import "./_variables";
 @import "~bootstrap/scss/bootstrap";
 
+@import "parts/header";
+
 body {
     background-color: rgb(250, 250, 250);
+    cursor: default;
 }
+
