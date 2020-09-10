@@ -27,6 +27,10 @@
 		"prefix": "getset",
 		"body": ["public function get$1() {", "\treturn \\$this->$2;", "}", "", "public function set$1(\\$value) {", "\t\\$this->$2 = \\$value;", "}"]
 	},
+	"SetterOrm": {
+		"prefix": "setter_orm",
+		"body": ["public function set$1(\\$value): self", "{", "\t\\$this->$2 = \\$value;", "", "\treturn \\$this;", "}"]
+	},
 	"GetterSetterOrm": {
 		"prefix": "getset_orm",
 		"body": ["public function get$1()", "{", "\treturn \\$this->$2;", "}", "", "public function set$1(\\$value): self", "{", "\t\\$this->$2 = \\$value;", "", "\treturn \\$this;", "}"]
