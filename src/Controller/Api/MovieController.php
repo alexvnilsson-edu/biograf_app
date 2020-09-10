@@ -2,24 +2,33 @@
 
 namespace App\Controller\Api;
 
+use App\Entity\Movie;
 use App\Service\MovieManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
- * @Route("/api/filmer", name="api_movies_")
+ * @Route("/api/movies", name="api_movies_")
  */
 class MovieController extends AbstractController
 {
     /**
      * @Route("/", name="all_movies")
      */
-    public function index(MovieManager $movieManager)
-    {        
-        $movies = $movieManager->getMovies();
-        $response = new Response(print_r($movies));
+    public function index(SerializerInterface $serializer)
+    {
+        $movies = $this->getDoctrine()->getRepository(Movie::class)->findAll();
 
-        return $response;
+        if (!$movies) {
+            throw new NotFoundHttpException("Inga filmer hittades.");
+        }
+
+
+
+        return new Response($serializer->serialize($movies, "json"));
     }
 }
