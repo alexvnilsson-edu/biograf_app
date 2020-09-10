@@ -26,6 +26,7 @@ Encore
   .addEntry("core_http", "./assets/js/core/http.js")
   .addEntry("style", "./assets/js/style.js")
 
+  .addEntry("index_movies", "./assets/js/pages/index/index-movies.js")
   .addEntry("members_registration", "./assets/js/pages/members/registration.js")
 
   /*
