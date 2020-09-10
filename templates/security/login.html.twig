@@ -3,24 +3,18 @@
 {% block title %}Logga in{% endblock %}
 
 {% block body %}
-<div class="container my-5">
+<div class="container mx-auto my-5" style="max-width: 24em">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
     <form method="post">
-      <div class="d-flex mb-3 flex-row justify-content-center align-items-center">
-        <a
-          href="/"
-          class="d-flex flex-row align-items-center px-2 mr-2"
-        >
-          <i class="fas fa-chevron-left fa-sm"></i>
-        </a>
-        <h2 class="my-0">Inloggning för medlemmar</h2>
+      <div class="mb-3">
+        <h2 class="my-0 text-black-50 text-nowrap">Inloggning för medlemmar</h2>
       </div>
 
-      <div class="container p-3 bg-light" style="max-width: 25em">
-        <h3 class="mt-0 mb-3 text-dark">Inloggningsuppgifter</h3>
+      <div class="container p-3 bg-white shadow-sm">
+        <h4 class="mt-0 mb-3 text-uppercase text-muted">Inloggningsuppgifter</h4>
 
         <div class="form-group">
           <input

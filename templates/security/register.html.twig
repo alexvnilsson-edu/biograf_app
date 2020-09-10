@@ -4,22 +4,19 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container my-5">
+	<div class="container mx-auto my-5" style="max-width: 24em">
         {{ form_start(form) }}
         
 		{% if form_errors(form) %}
 			<div class="alert alert-danger">{{ form_errors(form) }}</div>
 		{% endif %}
 
-		<div class="d-flex mb-3 flex-row justify-space-between align-items-center">
-			<a href="/" class="d-flex flex-row align-items-center px-2 mr-2">
-				<i class="fas fa-chevron-left fa-lg"></i>
-			</a>
-			<h1 class="my-0">Registrera ny kund</h1>
+        <div class="mb-3">
+            <h2 class="my-0 text-black-50 text-nowrap">Registrera nytt medlemskap</h2>
         </div>
         
-		<div class="container p-3 bg-light">
-			<h3 class="mt-0 mb-3 text-dark">Inloggningsuppgifter</h3>
+		<div class="container p-3 rounded-sm bg-white shadow-sm">
+			<h4 class="mt-0 mb-3 text-uppercase text-muted">Inloggningsuppgifter</h4>
 
 			<div class="form-group">
                 {{ form_widget(form.email, { required: true, attr: { class: "form-control", placeholder: "E-postadress", autofocus: true }}) }}
@@ -37,7 +34,7 @@
 
 			<hr/>
 
-			<h3 class="mt-0 mb-3 text-dark">Personuppgifter</h3>
+			<h4 class="mt-0 mb-3 text-uppercase text-muted">Personuppgifter</h4>
 
 			<div class="row">
 				<div class="col">
@@ -47,15 +44,24 @@
 				<div class="col">
                     {{ form_widget(form.lastname, { attr: { class: "form-control", placeholder: "Efternamn" }}) }}
 				</div>
-			</div>
+            </div>
+            
+            <div class="d-flex justify-content-end mt-3">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('user-registration') }}"/>
+                <button type="submit" class="btn btn-primary text-uppercase">
+                    Registrera
+                </button>
+            </div>
 		</div>
-
-		<div class="d-flex justify-content-end mt-1">
-			<input type="hidden" name="_csrf_token" value="{{ csrf_token('user-registration') }}"/>
-			<button type="submit" class="btn btn-primary">
-				Registrera
-			</button>
-		</div>
-		{{ form_end(form) }}
+        {{ form_end(form) }}
+        
+        <div class="d-flex flex-column align-items-center mt-3">
+            <p class="mb-0">
+                Har du redan ett konto?
+            </p>
+            <a href="{{ path('security_login') }}" class="btn btn-link">
+                Logga in instället
+            </a>
+        </div>
 	</div>
 {% endblock %}
