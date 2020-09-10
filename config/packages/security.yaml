@@ -1,28 +1,29 @@
 security:
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
-    encoders:
-        App\Entity\User:
-            algorithm: sha512
-    providers:
-        app_user_provider:
-            entity:
-                class: App\Entity\User
-                property: email
-    firewalls:
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-        main:
-            pattern: ^/
-            lazy: true
-            provider: app_user_provider
-            logout:
-                path: security_logout
-            guard:
-                authenticators:
-                  - App\Security\LoginFormAuthenticator
-    access_control:
-        - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/login_check, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
+  # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+  encoders:
+    App\Entity\User:
+      algorithm: sha512
+  providers:
+    app_user_provider:
+      entity:
+        class: App\Entity\User
+        property: email
+  firewalls:
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+    main:
+      pattern: ^/
+      anonymous: true
+      lazy: true
+      provider: app_user_provider
+      logout:
+        path: security_logout
+      guard:
+        authenticators:
+          - App\Security\LoginFormAuthenticator
+  access_control:
+    - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/login_check, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
