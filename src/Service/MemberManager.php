@@ -49,22 +49,18 @@ class MemberManager
         return hash(MemberManager::$PASSWORD_HASH_ALGORITHM, $salt . $password);
     }
 
-    public function create(UserType $userForm, bool $dryRun = false)
+    public function create(UserType $userForm)
     {
         $user = new User();
-        $user->setEmail($userForm->email);
-        $user->setSalt($this->createSalt($user));
-        $user->setPassword($this->passwordEncoder->encodePassword($user, $userForm->password));
-        $user->setFirstname($userForm->firstname);
-        $user->setLastname($userForm->lastname);
+        $user
+            ->setEmail($userForm->getEmail())
+            ->setSalt($this->createSalt($user))
+            ->setPassword($this->passwordEncoder->encodePassword($user, $userForm->getPassword()))
+            ->setFirstname($userForm->getFirstname())
+            ->setLastName($userForm->getLastname());
 
         $this->entityManager->persist($user);
-
-        if (!$dryRun) {
-            $this->entityManager->flush();
-        } else {
-            $user->setId(random_int(1, 100));
-        }
+        $this->entityManager->flush();
 
         return $user;
     }
