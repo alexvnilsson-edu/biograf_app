@@ -26,5 +26,9 @@
 	"GetterSetter": {
 		"prefix": "getset",
 		"body": ["public function get$1() {", "\treturn \\$this->$2;", "}", "", "public function set$1(\\$value) {", "\t\\$this->$2 = \\$value;", "}"]
+	},
+	"GetterSetterOrm": {
+		"prefix": "getset_orm",
+		"body": ["public function get$1()", "{", "\treturn \\$this->$2;", "}", "", "public function set$1(\\$value): self", "{", "\t\\$this->$2 = \\$value;", "", "\treturn \\$this;", "}"]
 	}
 }
