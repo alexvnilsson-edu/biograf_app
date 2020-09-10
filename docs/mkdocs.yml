@@ -61,7 +61,6 @@ markdown_extensions:
 
 # Plugins
 plugins:
-  - img2fig
   - awesome-pages:
       collapse_single_pages: true
 

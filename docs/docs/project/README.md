@@ -4,6 +4,6 @@ I ett försök att sammanbringa all dokumentation och planering på ett och samm
 
 ## Ska göras
 
-- [ ] För in bakgrund och syfte till projekt
+- [x] För in bakgrund och syfte till projekt
 - [ ] För in databasmodeller från utkast samt...
     - [ ] dokumentera förändringar i modellerna
