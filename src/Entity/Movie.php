@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Movie
  *
  * @ORM\Table(name="movie")
- * @ORM\Entity(repositoryClass=MovieRepository::class)
+ * @ORM\Entity
  */
 class Movie
 {
@@ -19,12 +19,12 @@ class Movie
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private int $id;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=192, nullable=false)
      */
-    private string $name;
+    private $name;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -51,7 +51,7 @@ class Movie
     private $genres;
 
     /**
-     * @ORM\OneToMany(targetEntity="MovieScreening", mappedBy="movie")
+     * @ORM\OneToMany(targetEntity="App\Entity\MovieScreening", mappedBy="movie")
      */
     private $screenings;
 
@@ -130,7 +130,7 @@ class Movie
         return $this;
     }
 
-    public function getScreenings(): ?ArrayCollection
+    public function getScreenings()
     {
         return $this->screenings;
     }

@@ -28,56 +28,40 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @var binary|null
-     *
      * @ORM\Column(type="binary", nullable=true)
      */
     private $emailConfirmed = false;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(type="string", length=160, nullable=true, options={"comment"="SHA-512 hash av lösenord."})
      */
     private $password;
 
     /**
      * @Assert\NotBlank
-     * @Assert\Regex(
-     *      pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/",
-     *      message="Use 1 upper case letter, 1 lower case letter, and 1 number"
-     * )
      */
     private $plainPassword;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(type="string", length=130, nullable=true)
      */
-    private string $salt;
+    private $salt;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(type="string", length=64, nullable=true)
      */
-    private string $firstname;
+    private $firstname;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(type="string", length=64, nullable=true)
      */
-    private string $lastname;
+    private $lastname;
 
     /**
      * @ORM\Column(type="string", length=256, unique=true, nullable=true)
      */
     private $apiToken;
-
-    private array $roles = array();
-
+    
     /**
      * @ORM\ManyToMany(targetEntity="MovieScreening")
      * @ORM\JoinTable(name="users_movies",
@@ -85,6 +69,13 @@ class User implements UserInterface
      *  inverseJoinColumns={@ORM\JoinColumn(name="movie_id", referencedColumnName="id")})
      */
     private $movieBookings;
+    
+    private $roles = array();
+
+    public function __construct()
+    {
+        $this->movieBookings = new ArrayCollection();
+    }
 
     //
     // Getters and setters
@@ -93,6 +84,13 @@ class User implements UserInterface
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setId($value): self
+    {
+        $this->id = $value;
+    
+        return $this;
     }
 
     public function getUsername(): ?string
@@ -105,9 +103,11 @@ class User implements UserInterface
         return $this->email;
     }
     
-    public function setEmail($value)
+    public function setEmail($value): self
     {
         $this->email = $value;
+    
+        return $this;
     }
 
     public function getEmailConfirmed(): ?bool
@@ -204,11 +204,6 @@ class User implements UserInterface
         $this->apiToken = $value;
     
         return $this;
-    }
-
-    public function __construct()
-    {
-        $this->movieBookings = new ArrayCollection();
     }
 
     /**
