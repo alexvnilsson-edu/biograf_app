@@ -72,6 +72,8 @@ class SecurityController extends AbstractController
 
             $user = $form->getData();
             $user = $this->memberManager->create($form->getData());
+
+            return $this->redirectToRoute("security_login");
         }
 
         return $this->render('security/register.html.twig', [
