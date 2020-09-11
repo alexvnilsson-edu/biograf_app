@@ -14,7 +14,7 @@ class IndexMoviesComponent extends Component {
   getMovies() {
     axios({
       method: "get",
-      url: `${window.APP_API_ENDPOINT}/api/movies`,
+      url: `${window.APP_API_ENDPOINT}/api/movies/`,
     })
       .then(({ data }) => {
         if (data.items) {
@@ -36,7 +36,16 @@ class IndexMoviesComponent extends Component {
         <h2>Filmer</h2>
 
         {this.state.movies.map((item) => (
-          <div key={item.id}>{item.name}</div>
+          <div
+            key={item.id}
+            className="d-inline-block shadow-sm"
+            style={{ borderRadius: "0.25rem", overflow: "hidden" }}
+          >
+            <img
+              alt={item.name}
+              src={`${window.APP_API_ENDPOINT}/api/movies/${item.id}/cover`}
+            />
+          </div>
         ))}
       </div>
     );

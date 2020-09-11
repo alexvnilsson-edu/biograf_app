@@ -1,10 +1,10 @@
 site_name: Biograf-projektet
 site_url: https://docs.biograf.edu.alexvnilsson.se
 site_author: Alex V. Nilsson
-edit_uri: ''
-copyright: '2020'
+edit_uri: ""
+copyright: "2020"
 social:
-  website: https://alexvnilsson.se
+    website: https://alexvnilsson.se
 
 # Käll-repo
 repo_url: https://github.com/alexvnilsson-edu/biograf_app
@@ -12,96 +12,55 @@ repo_name: biograf_app
 
 # MkDocs tema
 theme:
-  name: material
-  language: sv
-  custom_dir: overrides
-  font:
-    text: Open Sans
-    code: Fira Code
-  palette:
-    primary: hsl(4, 65%, 49%)
-    accent: blue
-  features:
-    - tabs
-    - navigation.expand
+    name: material
+    language: sv
+    custom_dir: overrides
+    font:
+        text: Open Sans
+        code: Fira Code
+    palette:
+        primary: hsl(4, 65%, 49%)
+        accent: blue
+    features:
+        - tabs
+        - navigation.expand
 
 # Extra CSS-filer eller link-element.
 extra_css:
-  - _stylesheets/root.css
-  - _stylesheets/extra.css
-  - _stylesheets/highlight.css
-  - _stylesheets/details.css
-  - _stylesheets/typography.css
+    - _stylesheets/root.css
+    - _stylesheets/print.css
+    - _stylesheets/extra.css
+    - _stylesheets/highlight.css
+    - _stylesheets/details.css
+    - _stylesheets/typography.css
 
 # Markdown-tillägg
 markdown_extensions:
-  - admonition
-  - pymdownx.details
-  - pymdownx.superfences
-  - footnotes
-  - def_list
-  - attr_list
-  - pymdownx.tabbed
-  - pymdownx.smartsymbols
-  - pymdownx.emoji
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.magiclink:
-      repo_url_shortener: true
-  - markdown_include.include:
-      base_path: docs/
-  - pymdownx.inlinehilite:
-      css_class: 'code_inline'
-      style_plain_text: true
-  - pymdownx.highlight:
-      use_pygments: true
-      linenums: false
-  - toc:
-      permalink: false
+    - admonition
+    - pymdownx.details
+    - pymdownx.superfences
+    - footnotes
+    - def_list
+    - attr_list
+    - pymdownx.tabbed
+    - pymdownx.smartsymbols
+    - pymdownx.emoji
+    - pymdownx.tasklist:
+        custom_checkbox: true
+    - pymdownx.magiclink:
+        repo_url_shortener: true
+    - markdown_include.include:
+        base_path: docs/
+    - pymdownx.inlinehilite:
+        css_class: "code_inline"
+        style_plain_text: true
+    - pymdownx.highlight:
+        use_pygments: true
+        linenums: false
+    - toc:
+        permalink: false
 
 # Plugins
 plugins:
-  - awesome-pages:
-      collapse_single_pages: true
-
-# Navigation
-# nav:
-#   - Komma igång:
-#     - Första stegen:
-#       - guidelines/first-steps/init-project.md
-#       - guidelines/first-steps/migrate-database.md
-#     - Databas:
-#       - Översikt: guidelines/database/README.md
-#       - guidelines/database/entities.md
-#   - Symfony:
-#     - Symfony CLI:
-#       - symfony/cli/index.md
-#       - symfony/cli/symfony-composer.md
-#   - Projektplan:
-#       - Överblick: project/README.md
-#       - Bakgrund och syfte: project/background.md
-#       - Koncept:
-#         - Översikt: project/concepts/README.md
-#         - Filmer: project/concepts/movies.md
-#   - Referenser:
-#     - Översikt: ./reference-overview.md
-#     - Controller:
-#       - IndexController: reference/Controller/IndexController.md
-#       - MemberController: reference/Controller/MemberController.md
-#       - SecurityController: reference/Controller/SecurityController.md
-#     - Entity:
-#       - Auditorium: reference/Entity/Auditorium.md
-#       - Cinema: reference/Entity/Cinema.md
-#       - City: reference/Entity/City.md
-#       - Movie: reference/Entity/Movie.md
-#       - MovieCover: reference/Entity/MovieCover.md
-#       - MovieGenre: reference/Entity/MovieGenre.md
-#       - User: reference/Entity/User.md
-#     - Form:
-#       - Type:
-#         - UserType: reference/Form/Type/UserType.md
-#     - Security:
-#       - LoginFormAuthenticator: reference/Security/LoginFormAuthenticator.md
-#     - Service:
-#       - MemberManager: reference/Service/MemberManager.md
-#       - MovieManager: reference/Service/MovieManager.md
+    - awesome-pages:
+        collapse_single_pages: true

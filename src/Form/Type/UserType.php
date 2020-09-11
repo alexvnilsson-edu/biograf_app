@@ -16,6 +16,7 @@ class UserType extends AbstractType
     /**
      * @Assert\NotBlank
      * @Assert\Email(
+     *      mode    = "strict",
      *      message = "Angiven e-postadress ({{ value }}) är inte giltig."
      * )
      */

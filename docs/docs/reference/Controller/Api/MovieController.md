@@ -14,6 +14,7 @@ Symfony\Bundle\FrameworkBundle\Controller\AbstractController
 | Name | Description |
 |------|-------------|
 |[index](#moviecontrollerindex)||
+|[movie_cover](#moviecontrollermovie_cover)||
 
 ## Inherited methods
 
@@ -30,6 +31,30 @@ Symfony\Bundle\FrameworkBundle\Controller\AbstractController
 
 ```php
  index (void)
+```
+
+ 
+
+ 
+
+**Parameters**
+
+`This function has no parameters.`
+
+**Return Values**
+
+`void`
+
+
+<hr />
+
+
+### MovieController::movie_cover  
+
+**Description**
+
+```php
+ movie_cover (void)
 ```
 
  
