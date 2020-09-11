@@ -2,5 +2,4 @@ collapse: true
 arrange:
   - README.md
   - getting-started
-  - project
   - reference
