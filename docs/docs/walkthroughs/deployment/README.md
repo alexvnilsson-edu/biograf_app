@@ -38,11 +38,22 @@ Configure a virtual host serving the `public/` directory, as such:
 
 In our `.env.local` we'll add some variables for setting up MySQL-connections, etc.
 
+
+#### Database connection
+
 ```conf
 DATABASE_URL=mysql://[user]:[password]@[host]:[port]/[database]?serverVersion=8.0
 ```
 
-### (Optional) Setting trusted proxy addresses
+#### JSON Web Token keys
+
+```conf
+JWT_SECRET_KEY=config/jwt/private.pem
+JWT_PUBLIC_KEY=config/jwt/public.pem
+JWT_PASSPHRASE=[passphrase]
+```
+
+### Setting trusted proxy addresses (Optional)
 
 If running the application behind a load balancer or proxy, we need to change a few configuration options.
 
