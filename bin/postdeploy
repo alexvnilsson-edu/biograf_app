@@ -1,0 +1,23 @@
+#!/bin/bash
+
+e_missing_binary=2
+
+c_default="\e[39m"
+c_green="\e[32m"
+c_red="\e[31m"
+
+u_check="✓"
+
+bins_needed=(composer node npm)
+
+for bin in "${bins_needed[@]}"; do
+    if ! command -v $bin &> /dev/null; then
+        echo -e "${c_red}Missing binary ${bin}.${c_default}"
+        exit $e_missing_binary
+    else
+        echo -e "${c_green}${u_check} ${bin}${c_default} installed."
+    fi
+done
+
+composer install
+npm run build

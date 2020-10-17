@@ -1,10 +1,9 @@
-/* ------ Globalt ------ */
-
-code {
-    font-weight: 500;
-}
-
 /* ------ Highlight ------ */
+
+.md-typeset code {
+    font-weight: 500;
+    font-size: 0.75em;
+}
 
 .md-typeset code .lineno::before {
     color: var(--md-code-fg-color--dark);
@@ -30,7 +29,7 @@ pre .md-clipboard {
 /* ------ InlineHilite ------ */
 
 /* Inline kodblock */
-code.code_inline {
+.md-typeset code.code_inline {
     background-color: var(--md-default-bg-color--lighter);
     color: var(--md-default-fg-color--light);
 }

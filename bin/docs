@@ -1,0 +1,39 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+ROOT_DIR="$(dirname $DIR)"
+DOCS_DIR="${ROOT_DIR}/docs"
+
+e_missing_binary=2
+e_missing_virtualenv=3
+
+c_default="\e[39m"
+c_green="\e[32m"
+c_red="\e[31m"
+
+bins_needed=(mkdocs)
+
+for bin in "${bins_needed[@]}"; do
+    if ! command -v $bin &> /dev/null; then
+        echo -e "${c_red}Missing binary ${c_default}${bin}"
+        exit $e_missing_binary
+    fi
+done
+
+cd "${DOCS_DIR}"
+
+virtualenv_path="${DOCS_DIR}/.venv"
+
+if [[ ! -d ${virtualenv_path} ]]; then
+    echo -e "${c_red}Missing virtualenv."
+    exit $e_missing_virtualenv
+fi
+
+source "${virtualenv_path}/bin/activate"
+pip install --requirement requirements.txt --quiet
+
+cmd_argument=${1:-build}
+
+#$DOCS_DIR/bin/prebuild
+
+mkdocs $cmd_argument
