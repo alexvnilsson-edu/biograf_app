@@ -1,0 +1,35 @@
+/* ------ Highlight ------ */
+
+.md-typeset code {
+    font-weight: 500;
+    font-size: 0.75em;
+}
+
+.md-typeset code .lineno::before {
+    color: var(--md-code-fg-color--dark);
+    box-shadow: -0.05rem 0 var(--md-code-bg-color--lightest) inset !important;
+}
+
+/* Rad-nummer i highlight-table. */
+.highlighttable .linenos .linenodiv {
+    box-shadow: -0.05rem 0 var(--md-code-bg-color--lighter) inset !important;
+} .highlighttable .linenos .linenodiv pre {
+    color: var(--md-code-fg-color--darker);
+}
+
+/* Clipboard-knapp. */
+pre .md-clipboard {
+    color: var(--md-code-fg-color--dark);
+} pre:focus .md-clipboard, pre:hover .md-clipboard {
+    color: var(--md-code-fg-color--darkest);
+} pre .md-clipboard:focus, pre .md-clipboard:hover {
+    color: var(--md-code-fg-color--light);
+}
+
+/* ------ InlineHilite ------ */
+
+/* Inline kodblock */
+.md-typeset code.code_inline {
+    background-color: var(--md-default-bg-color--lighter);
+    color: var(--md-default-fg-color--light);
+}

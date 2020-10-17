@@ -1,0 +1,62 @@
+body {
+    cursor: default;
+}
+
+/* ---- Navigationsvy ---- */
+.md-nav.md-nav--primary .md-nav__title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    /* color: var(--md-default-fg-color--darkest); */
+}
+.md-nav.md-nav--primary label.md-nav__title[for*="nav-"] {
+    color: var(--md-default-fg-color--darker);
+}
+.md-nav.md-nav--primary .md-nav__item {
+    border: 0;
+}
+/* .md-typeset table:not([class]) td {
+    border: 0;
+} */
+.md-nav--primary .md-nav__title~.md-nav__list {
+    box-shadow: none;
+}
+
+@media screen and (min-width: 76.25em) {
+    /* Navigeringsvyn på stora skärmar placerar caret till vänster om länk. */
+
+    .md-nav.md-nav--primary .md-nav__item {
+        position: relative;
+        overflow: visible;
+    }
+
+    .md-nav.md-nav--primary .md-nav__item .md-nav__link .md-nav__icon.md-nav__icon--left {
+        float: left;
+        position: absolute;
+        top: 0;
+        left: -0.25rem;
+    }
+}
+
+/* ---- Content tabs ---- */
+.md-typeset .tabbed-set {
+    background-color: var(--md-default-bg-color--lighter);
+}
+.md-typeset .tabbed-content {
+    background-color: var(--md-default-bg-color--light);
+}
+
+/* ---- Tabeller ---- */
+
+/* Tabellrubriker */
+.md-typeset table:not([class]) th {
+    background-color: var(--md-default-bg-color--darkest);
+    color: var(--md-default-fg-color--darker);
+    font-size: .89rem;
+    padding: 0.5em 1em;
+    font-weight: 600;
+}
+
+/* ---- Footer ---- */
+html .md-footer-meta.md-typeset a {
+    color: var(--md-primary-fg-color--light);
+}

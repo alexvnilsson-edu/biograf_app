@@ -1,0 +1,881 @@
+
+
+
+<!doctype html>
+<html lang="sv" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <link rel="canonical" href="https://docs.biograf.edu.alexvnilsson.se/reference/Controller/Api/ApiBaseController/">
+      
+      
+        <meta name="author" content="Alex V. Nilsson">
+      
+      <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.12">
+    
+    
+      
+        <title>App\Controller\Api\ApiBaseController - Biograf-projektet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.4dd2dd8d.min.css">
+      
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.6a5ad368.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700%7CFira+Code&display=fallback">
+        <style>body,input{font-family:"Open Sans",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Fira Code",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../../_stylesheets/root.css">
+    
+      <link rel="stylesheet" href="../../../../_stylesheets/print.css">
+    
+      <link rel="stylesheet" href="../../../../_stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../../_stylesheets/highlight.css">
+    
+      <link rel="stylesheet" href="../../../../_stylesheets/details.css">
+    
+      <link rel="stylesheet" href="../../../../_stylesheets/typography.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="hsl(4,-65%,-49%)" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#appcontrollerapiapibasecontroller" class="md-skip">
+          Gå till innehållet
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://docs.biograf.edu.alexvnilsson.se" title="Biograf-projektet" class="md-header-nav__button md-logo" aria-label="Biograf-projektet">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Biograf-projektet
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              App\Controller\Api\ApiBaseController
+            
+          </span>
+        </div>
+      
+    </div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/alexvnilsson-edu/biograf_app" title="Gå till datakatalog" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    biograf_app
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../../../.." class="md-tabs__link">
+        Start
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../../walkthroughs/" class="md-tabs__link">
+          Walkthroughs
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../" class="md-tabs__link md-tabs__link--active">
+          Referenser
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://docs.biograf.edu.alexvnilsson.se" title="Biograf-projektet" class="md-nav__button md-logo" aria-label="Biograf-projektet">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Biograf-projektet
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/alexvnilsson-edu/biograf_app" title="Gå till datakatalog" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    biograf_app
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../.." title="Start" class="md-nav__link">
+      Start
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+        <span class="md-nav__icon md-nav__icon--left md-icon"></span>
+        <span>Walkthroughs</span>
+    </label>
+    <nav class="md-nav" aria-label="Walkthroughs" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Walkthroughs
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../walkthroughs/" title="Överblick" class="md-nav__link">
+      Överblick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../walkthroughs/init-project/" title="Initiera projektet" class="md-nav__link">
+      Initiera projektet
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../walkthroughs/migrate-database/" title="Migration av databasmodell" class="md-nav__link">
+      Migration av databasmodell
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../walkthroughs/test-run-server/" title="Testköra Symfony-webbappen" class="md-nav__link">
+      Testköra Symfony-webbappen
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../walkthroughs/database/" title="Introduktion av databas" class="md-nav__link">
+      Introduktion av databas
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-6" type="checkbox" id="nav-2-6">
+    
+    <label class="md-nav__link" for="nav-2-6">
+        <span class="md-nav__icon md-nav__icon--left md-icon"></span>
+        <span>Deployment</span>
+    </label>
+    <nav class="md-nav" aria-label="Deployment" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-6">
+        <span class="md-nav__icon md-icon"></span>
+        Deployment
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../walkthroughs/deployment/" title="Deploying application" class="md-nav__link">
+      Deploying application
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../walkthroughs/deployment/test/" title="Test" class="md-nav__link">
+      Test
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-7" type="checkbox" id="nav-2-7">
+    
+    <label class="md-nav__link" for="nav-2-7">
+        <span class="md-nav__icon md-nav__icon--left md-icon"></span>
+        <span>Symfony</span>
+    </label>
+    <nav class="md-nav" aria-label="Symfony" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-7">
+        <span class="md-nav__icon md-icon"></span>
+        Symfony
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../walkthroughs/symfony/" title="Symfony" class="md-nav__link">
+      Symfony
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-7-2" type="checkbox" id="nav-2-7-2">
+    
+    <label class="md-nav__link" for="nav-2-7-2">
+        <span class="md-nav__icon md-nav__icon--left md-icon"></span>
+        <span>Symfony CLI</span>
+    </label>
+    <nav class="md-nav" aria-label="Symfony CLI" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-7-2">
+        <span class="md-nav__icon md-icon"></span>
+        Symfony CLI
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../walkthroughs/symfony/cli/" title="Överblick" class="md-nav__link">
+      Överblick
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../walkthroughs/symfony/cli/symfony-composer/" title="symfony composer" class="md-nav__link">
+      symfony <b>composer</b>
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+        <span class="md-nav__icon md-nav__icon--left md-icon"></span>
+        <span>Referenser</span>
+    </label>
+    <nav class="md-nav" aria-label="Referenser" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Referenser
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../" title="Referenser" class="md-nav__link">
+      Referenser
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2" checked>
+    
+    <label class="md-nav__link" for="nav-3-2">
+        <span class="md-nav__icon md-nav__icon--left md-icon"></span>
+        <span>Controller</span>
+    </label>
+    <nav class="md-nav" aria-label="Controller" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        <span class="md-nav__icon md-icon"></span>
+        Controller
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../IndexController/" title="App\Controller\IndexController" class="md-nav__link">
+      App\Controller\IndexController
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../MemberController/" title="App\Controller\MemberController" class="md-nav__link">
+      App\Controller\MemberController
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../SecurityController/" title="App\Controller\SecurityController" class="md-nav__link">
+      App\Controller\SecurityController
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2-4" type="checkbox" id="nav-3-2-4" checked>
+    
+    <label class="md-nav__link" for="nav-3-2-4">
+        <span class="md-nav__icon md-nav__icon--left md-icon"></span>
+        <span>Api</span>
+    </label>
+    <nav class="md-nav" aria-label="Api" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-2-4">
+        <span class="md-nav__icon md-icon"></span>
+        Api
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        App\Controller\Api\ApiBaseController
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" title="App\Controller\Api\ApiBaseController" class="md-nav__link md-nav__link--active">
+      App\Controller\Api\ApiBaseController
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#implements" class="md-nav__link">
+    Implements:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extend" class="md-nav__link">
+    Extend:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    Methods
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inherited-methods" class="md-nav__link">
+    Inherited methods
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../MovieController/" title="App\Controller\Api\MovieController" class="md-nav__link">
+      App\Controller\Api\MovieController
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+        <span class="md-nav__icon md-nav__icon--left md-icon"></span>
+        <span>Type</span>
+    </label>
+    <nav class="md-nav" aria-label="Type" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        <span class="md-nav__icon md-icon"></span>
+        Type
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Form/Type/MemberAuthenticationType/" title="App\Form\Type\MemberAuthenticationType" class="md-nav__link">
+      App\Form\Type\MemberAuthenticationType
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Form/Type/UserType/" title="App\Form\Type\UserType" class="md-nav__link">
+      App\Form\Type\UserType
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Innehållsförteckning">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Innehållsförteckning
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#implements" class="md-nav__link">
+    Implements:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extend" class="md-nav__link">
+    Extend:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    Methods
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inherited-methods" class="md-nav__link">
+    Inherited methods
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="appcontrollerapiapibasecontroller">App\Controller\Api\ApiBaseController</h1>
+<h2 id="implements">Implements:</h2>
+<p>Symfony\Contracts\Service\ServiceSubscriberInterface</p>
+<h2 id="extend">Extend:</h2>
+<p>Symfony\Bundle\FrameworkBundle\Controller\AbstractController</p>
+<h2 id="methods">Methods</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="inherited-methods">Inherited methods</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://secure.php.net/manual/en/symfony\bundle\frameworkbundle\controller\abstractcontroller.getsubscribedservices.php">getSubscribedServices</a></td>
+<td>-</td>
+</tr>
+<tr>
+<td><a href="https://secure.php.net/manual/en/symfony\bundle\frameworkbundle\controller\abstractcontroller.setcontainer.php">setContainer</a></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+
+<footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+
+      <!-- Copyright and theme information -->
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &#169;
+            2020
+
+            
+              <a href="https://alexvnilsson.se" target="_blank" rel="noopener">Alex V. Nilsson</a>;
+            
+
+            Alla rättigheter reserverade.
+          </div>
+        
+      </div>
+
+      <!-- Social links -->
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../../assets/javascripts/vendor.3636a4ec.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.e9fe3281.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Kopiera till urklipp", "clipboard.copied": "Kopierat till urklipp", "search.config.lang": "sv", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Skriv s\u00f6kord", "search.result.none": "Inga s\u00f6kresultat", "search.result.one": "1 s\u00f6kresultat", "search.result.other": "# s\u00f6kresultat"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../../..",
+          features: ["tabs", "navigation.expand"],
+          search: Object.assign({
+            worker: "../../../../assets/javascripts/worker/search.5eca75d3.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

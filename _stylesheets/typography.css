@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap');
+
+/* ------ Rubriker ------ */
+
+/* h1-h6 */
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4,
+.md-typeset h5,
+.md-typeset h6 {
+    font-weight: 600;
+}
+
+.md-typeset h1 {
+    margin: 0 0 0;
+}
+
+.md-typeset h2 {
+    margin: .8em 0 0;
+}
+
+.md-typeset h3 {
+    margin: .8em 0 0;
+}
+
+.md-typeset h4 {
+    margin: .8em 0 0;
+    font-size: .9rem;
+}
+
+.md-typeset h2 + p,
+.md-typeset h3 + p,
+.md-typeset h4 + p,
+.md-typeset h5 + p {
+    margin-top: 0;
+}
+
+/* Navigering: tabbar */
+.md-tabs .md-tabs__list li.md-tabs__item a.md-tabs__link:not(.md-tabs__link--active) {
+    font-weight: 600;
+}
+.md-tabs .md-tabs__list li.md-tabs__item a.md-tabs__link.md-tabs__link--active {
+    font-weight: 700;
+}
+
+/* Navigering */
+.md-nav__link {
+    font-weight: 600;
+}
+
+.md-nav .md-nav__item .md-nav__link--active {
+    font-weight: 700;
+}
+
+.md-nav--secondary .md-nav__title[for=__toc] {
+    font-size: 1rem;
+}
+
+.md-nav--secondary li.md-nav__item a.md-nav__link {
+    font-weight: 600;
+}
+
+/* Innehåll */
+.md-content .md-typeset h1 {
+    font-weight: 700;
+}
+
+.md-typeset p, .md-typeset ul, .md-typeset ol, .md-typeset blockquote {
+    font-size: 0.75rem;
+}
+
+/* Figureetiketter */
+.md-typeset figcaption {
+    margin: 0 auto 0.5em auto;
+
+    font-size: .6rem;
+    font-style: normal;
+    font-weight: 400;
+}
+
+/* Fotnoter */
+.md-typeset a.footnote-ref {
+    font-weight: 600;
+    color: var(--md-default-fg-color--light);
+} .md-typeset a.footnote-ref:hover, .md-typeset a.footnote-ref:focus {
+    color: var(--md-default-fg-color--darkest);
+}
+
+/* ---- Colors ---- */
+
+.text-muted {
+    color: var(--md-default-fg-color--lighter);
+}

@@ -1,0 +1,55 @@
+:root > * {
+    --md-default-fg-color:               hsl(0, 0%, 6%);
+    --md-default-fg-color--light:        hsl(0, 0%, 25%);
+    --md-default-fg-color--lighter:      hsl(0, 0%, 50%);
+    --md-default-fg-color--lightest:     hsl(0, 0%, 75%);
+    --md-default-fg-color--dark:         hsl(0, 0%, 4%);
+    --md-default-fg-color--darker:       hsl(0, 0%, 2%);
+    --md-default-fg-color--darkest:      hsl(0, 0%, 0%);
+    --md-default-fg-color--inverse:      hsl(0, 0%, 94%);
+    --md-default-bg-color:               hsl(0, 0%, 93%);
+    --md-default-bg-color--light:        hsl(0, 0%, 96%);
+    --md-default-bg-color--lighter:      hsl(0, 0%, 99%);
+    --md-default-bg-color--dark:         hsl(0, 0%, 90%);
+    --md-default-bg-color--darker:       hsl(0, 0%, 87%);
+    --md-default-bg-color--darkest:      hsl(0, 0%, 84%);
+
+    --md-primary-fg-color:               hsl(4, 65%, 49%);
+    --md-primary-fg-color--light:        hsl(0, 69%, 67%);
+    --md-primary-fg-color--dark:         hsl(0, 65%, 51%);
+    --md-primary-bg-color:               hsla(0, 0%, 100%, 1);
+    --md-primary-bg-color--light:        hsla(0, 0%, 100%, 0.7);
+
+    --md-accent-fg-color:                hsla(218, 100%, 63%, 1);
+    --md-accent-fg-color--transparent:   hsla(218, 100%, 63%, 0.1);
+    --md-accent-bg-color:                hsla(0, 0%, 100%, 1);
+    --md-accent-bg-color--light:         hsla(0, 0%, 100%, 0.7);
+
+    --md-code-bg-color:                 hsl(0, 0%, 14%);
+    --md-code-bg-color--light:          hsl(0, 0%, 22%);
+    --md-code-bg-color--lighter:        hsl(0, 0%, 28%);
+    --md-code-bg-color--lightest:       hsl(0, 0%, 34%);
+    --md-code-fg-color:                 hsl(0, 0%, 90%);
+    --md-code-fg-color--light:          hsl(0, 0%, 93%);
+    --md-code-fg-color--lighter:        hsl(0, 0%, 96%);
+    --md-code-fg-color--lightest:       hsl(0, 0%, 100%);
+    --md-code-fg-color--dark:           hsl(0, 0%, 80%);
+    --md-code-fg-color--darker:         hsl(0, 0%, 70%);
+    --md-code-fg-color--darkest:        hsl(0, 0%, 60%);
+    --md-code-hl-color:                 hsl(51, 82%, 48%);
+
+    --md-code-hl-number-color: #d52a2a;
+    --md-code-hl-special-color: #db1457;
+    --md-code-hl-function-color: #c15bd3;
+    --md-code-hl-constant-color: #806be6;
+    --md-code-hl-keyword-color: #6393eb;
+    --md-code-hl-string-color: #1c7d4d;
+    --md-code-hl-name-color: #97aec0;
+
+    --md-code-hl-operator-color: #bebebe;
+    --md-code-hl-punctuation-color: #dedede;
+    --md-code-hl-comment-color: #bebebe;
+    --md-code-hl-generic-color: #bebebe;
+    --md-code-hl-generic-color--darker: #6e6e6e;
+    --md-code-hl-variable-color: #bebebe;
+}
